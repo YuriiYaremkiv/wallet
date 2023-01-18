@@ -1,0 +1,100 @@
+:root {
+  --gray-900: #1a202c;
+  --gray-800: #2d3748;
+  --gray-700: #4a5568;
+  --gray-600: #718096;
+  --gray-500: #a0aec0;
+  --gray-400: #cbd5e0;
+  --gray-300: #e2e8f0;
+  --gray-200: #edf2f7;
+  --gray-100: #f7fafc;
+  --red-100: #fff5f5;
+  --red-200: #fed7d7;
+  --red-300: #feb2b2;
+  --red-400: #fc8181;
+  --red-500: #f56565;
+  --red-600: #e53e3e;
+  --red-700: #c53030;
+  --red-800: #9b2c2c;
+  --red-900: #742a2a;
+  --blue-100: #ebf8ff;
+  --blue-200: #bee3f8;
+  --blue-300: #90cdf4;
+  --blue-400: #63b3ed;
+  --blue-500: #4299e1;
+  --blue-600: #3182ce;
+  --blue-700: #2b6cb0;
+  --blue-800: #2c5282;
+  --blue-900: #2a4365;
+  --white: white;
+  --red: #f56565;
+  --text-decoration-color: var(--gray-400);
+  --text-color: var(--gray-800);
+  --focus-ring-color: var(--blue-500);
+}
+
+/* Form
+––––––––––––––––––––––––––––––––– */
+
+input {
+  padding: 0.65rem 0.5rem;
+  padding-left: 36px;
+  font-size: 1rem;
+}
+
+/* Abbreviation
+––––––––––––––––––––––––––––––––– */
+
+/***************************************************************************/
+.RegistrationForm {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid;
+}
+
+.MyText {
+  min-height: 72px;
+}
+
+.MyText__container {
+  position: relative;
+}
+
+.MyText__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--secondary-text-color);
+
+  transition: border 250ms ease-in-out;
+
+  &:focus {
+    outline: none;
+
+    border-bottom: 1px solid #4a56e2;
+  }
+
+  &:focus ~ svg {
+    fill: #4a56e2;
+  }
+
+  &:invalid {
+    border-bottom: 2px solid #ff7d87;
+    box-shadow: none;
+  }
+}
+
+.MyText__icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+
+  fill: var(--secondary-text-color);
+  transition: fill 250ms ease-in-out;
+
+  transform: translateY(-50%);
+}
+
+.MyText__error {
+  color: red;
+}
