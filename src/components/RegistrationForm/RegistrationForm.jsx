@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 
@@ -79,7 +80,12 @@ export const RegistrationForm = () => {
             icon={sprite + "#user"}
           />
 
-          <button type="submit">Submit</button>
+          <button className={css.RegistrationForm__button} type="submit">
+            Register
+          </button>
+          <NavLink className={css.RegistrationForm__Navlink} to="/login">
+            LOGIN
+          </NavLink>
         </Form>
       </Formik>
     </>

@@ -4,7 +4,7 @@ import { RegistrationForm } from "../components/RegistrationForm/RegistrationFor
 export const RegistrationPage = () => {
   return (
     <div>
-      RegistrationPage
+      <h1>RegistrationPage</h1>
       <RegistrationForm />
     </div>
   );
