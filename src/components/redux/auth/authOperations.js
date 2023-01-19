@@ -32,7 +32,7 @@ const login = createAsyncThunk("auth/login", async (user) => {
   }
 });
 
-const signOut = createAsyncThunk("auth/signOut", async (user) => {
+const signOut = createAsyncThunk("auth/signOut", async () => {
   try {
     const response = await axios.delete("/api/auth/sign-out");
     token.unset();
@@ -42,15 +42,22 @@ const signOut = createAsyncThunk("auth/signOut", async (user) => {
   }
 });
 
-const refresh = createAsyncThunk("auth/refresh", async (user) => {
+const refresh = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const persistedToken = state.auth.token;
+
+  if (persistedToken === null) {
+    return thunkAPI.rejectWithValue();
+  }
+
+  token.set(persistedToken);
   try {
-    const response = await axios.delete("/api/auth/sign-out");
-    token.unset();
+    const response = await axios.get("/api/users/current");
     return response.data;
   } catch (e) {
     throw new Error(e.message);
   }
 });
 
-const operations = { register, login, signOut };
+const operations = { register, login, signOut, refresh };
 export default operations;

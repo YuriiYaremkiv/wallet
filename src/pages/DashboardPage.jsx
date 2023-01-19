@@ -3,6 +3,11 @@ import { authOperations } from "components/redux/auth";
 
 export const DashboardPage = () => {
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(authOperations.refresh());
+  // }, []);
+
   return (
     <div>
       <h1>DashboardPage</h1>
