@@ -6,6 +6,9 @@ import * as Yup from "yup";
 import css from "./RegistrationForm.module.scss";
 import sprite from "./icons/register-icons.svg";
 
+import { useDispatch } from "react-redux";
+import { authOperations } from "components/redux/auth";
+
 const MyTextInput = ({ label, icon, ...props }) => {
   const [field, meta] = useField(props);
   return (
@@ -25,16 +28,18 @@ const MyTextInput = ({ label, icon, ...props }) => {
 
 // And now we can use these
 export const RegistrationForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <Formik
         initialValues={{
           email: "",
           password: "",
-          firstName: "",
+          username: "",
         }}
         validationSchema={Yup.object({
-          firstName: Yup.string()
+          username: Yup.string()
             .max(15, "Must be 15 characters or less")
             .required("Required"),
           password: Yup.string()
@@ -45,10 +50,8 @@ export const RegistrationForm = () => {
             .required("Required"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          dispatch(authOperations.register(values));
+          setSubmitting(false);
         }}
       >
         <Form className={css.RegistrationForm}>
@@ -74,7 +77,7 @@ export const RegistrationForm = () => {
           />
 
           <MyTextInput
-            name="firstName"
+            name="username"
             type="text"
             placeholder="First name"
             icon={sprite + "#user"}
