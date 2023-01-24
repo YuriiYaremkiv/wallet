@@ -1,0 +1,87 @@
+@import '../../style/vars.scss';
+
+.RegistrationForm {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid;
+}
+
+.RegistrationForm__button {
+  display: block;
+  padding: 14px 58px;
+  margin: 0 auto;
+  width: 100%;
+
+  font-size: 18px;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  border: none;
+  border-radius: 20px;
+}
+
+.RegistrationForm__Navlink {
+  display: block;
+  padding: 14px 58px;
+
+  text-align: center;
+
+  margin: 0 auto;
+
+  border: 1px solid #4a56e2;
+  border-radius: 20px;
+}
+
+.MyText {
+  min-height: 72px;
+}
+
+.MyText__container {
+  position: relative;
+}
+
+.MyText__input {
+  padding: 12px;
+  padding-left: 40px;
+  width: 100%;
+
+  font-size: 18px;
+  background-color: none;
+
+  border: none;
+  border-bottom: 1px solid map-get($colors, 'secondary-back-color');
+
+  transition: border 250ms ease-in-out;
+
+  &:focus {
+    outline: none;
+
+    border-bottom: 1px solid #4a56e2;
+  }
+
+  &:focus ~ svg {
+    fill: #4a56e2;
+  }
+
+  &:invalid {
+    border-bottom: 2px solid #ff7d87;
+    box-shadow: none;
+  }
+}
+
+.MyText__icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+
+  fill: map-get($colors, 'secondary-back-color');
+  transition: fill 250ms ease-in-out;
+
+  transform: translateY(-50%);
+}
+
+.MyText__error {
+  color: red;
+}
