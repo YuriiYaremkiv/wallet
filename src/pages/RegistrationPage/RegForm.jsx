@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-// import styles from './RegistrationPage.module.scss';
 
-import { AiFillLock } from 'react-icons/ai';
-import { BsPersonFill } from 'react-icons/bs';
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import { userSchema } from './user_validation';
-import { Formik, Field, Form, ErrorMessage, useField } from 'formik';
+import { Formik, Form, ErrorMessage, useField } from 'formik';
 import { register } from 'redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
@@ -18,23 +15,7 @@ import css from './RegForm.module.scss';
 
 import sprite from './icons/register-icons.svg';
 
-const MyTextInput = ({ label, icon, children, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className={css.MyText}>
-      <div className={css.MyText__container}>
-        <input className={css.MyText__input} {...field} {...props} />
-        <svg className={css.MyText__icon} width="24" height="24">
-          <use href={icon}></use>
-        </svg>
-      </div>
-      {meta.touched && meta.error ? (
-        <div className={css.MyText__error}>{meta.error}</div>
-      ) : null}
-      {children}
-    </div>
-  );
-};
+import { MyTextInput } from 'block/MyTextInput/MyTextInput';
 
 export default function RegForm() {
   const language = useSelector(translationSelector);
@@ -59,7 +40,7 @@ export default function RegForm() {
       onSubmit={(values, { resetForm }) => {
         dispatch(
           register({
-            username: values.name,
+            username: values.username,
             email: values.email,
             password: values.password,
           })
