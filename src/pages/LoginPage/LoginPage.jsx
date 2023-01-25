@@ -16,7 +16,24 @@ const LoginPage = () => {
       <LanguageToggler />
       <div className="container">
         <h1 className={styles.title}>{translation[language].title}</h1>
-        <LoginForm />
+        <div className={styles.form_wrapper}>
+          <div className={styles.title_wrapper}>
+            <img
+              className={styles.wallet_img}
+              src={require('../RegistrationPage/images/icon.png')}
+              alt="wallet"
+            />
+            <h2 className={styles.form_title}>
+              {translation[language].form_title}
+            </h2>
+          </div>
+
+          <div className={styles.form}>
+            <div className={styles.input_wrapper}>
+              <LoginForm />
+            </div>
+          </div>
+        </div>
         <Suspense fallback={<Loader />}></Suspense>
       </div>
       {isLoading && <Loader />}

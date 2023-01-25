@@ -1,4 +1,3 @@
-import styles from './RegistrationPage.module.scss';
 import css from './RegistrationPage.module.scss';
 
 import RegForm from './RegForm';
@@ -10,36 +9,31 @@ import LanguageToggler from 'components/LanguageToggler/LanguageToggler';
 import translation from '../../assets/translation/register.json';
 import { translationSelector } from 'redux/translation/translationSelectors';
 
-import { MdEmail } from 'react-icons/md';
+import sprite from './icons/register-icons.svg';
 
 const RegistrationPage = () => {
   const language = useSelector(translationSelector);
   const isLoading = useSelector(selectIsloadingLogin);
 
   return (
-    <div className={css.registration_page}>
+    <div className={css.registrationPage}>
       <LanguageToggler />
+
       <div className="container">
-        <h1 className={css.title}>{translation[language].title}</h1>
-        <div className={css.form_wrapper}>
-          <div className={css.title_wrapper}>
-            <img
-              className={css.wallet_img}
-              src={require('./images/icon.png')}
-              alt="wallet"
-            />
-            <h1>fgdrfgfdg</h1>
-            <h2 className={css.form_title}>
+        <h1 className={css.registrationPage__title}>
+          {translation[language].title}
+        </h1>
+        <div className={css.registrationPage__wrapper}>
+          <div className={css.registrationPage__wrapper__title}>
+            <svg className={css.registrationPage__img} width="40" height="40">
+              <use href={sprite + '#wallet'}></use>
+            </svg>
+            <h2 className={css.registrationPage__form__title}>
               {translation[language].form_title}
             </h2>
           </div>
 
-          <div className={css.form}>
-            <div className={css.input_wrapper}>
-              <MdEmail className={css.ico} />
-              <RegForm />
-            </div>
-          </div>
+          <RegForm />
         </div>
         <Suspense fallback={<Loader />}></Suspense>
       </div>

@@ -1,0 +1,275 @@
+@import '../../style/vars.scss';
+
+.input_wrapper {
+  position: relative;
+}
+.register_btn {
+  width: 300px;
+  height: 50px;
+  border: 0;
+  align-self: center;
+  background: #24cca7;
+  border-radius: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: var(--primary-font);
+  letter-spacing: 0.1em;
+  font-size: 18px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.form_wrapper {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  width: 533px;
+  height: 616px;
+  padding: 40px 62px 66px 62px;
+  position: absolute;
+  right: 91px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.title_wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.wallet_img {
+  width: 40px;
+  height: 40px;
+}
+
+.form_title {
+  font-family: var(--secondary-font);
+  color: var(--primary-text-color);
+  font-weight: 700;
+  line-height: 1.5;
+  font-size: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.input {
+  height: 32px;
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  padding-left: 54px;
+  padding-right: 54px;
+}
+.input::placeholder {
+  color: #bdbdbd;
+  font-size: 18px;
+  font-family: var(--primary-font);
+  line-height: 1.5;
+}
+.input_wrapper {
+  position: relative;
+}
+
+.ico {
+  width: 24px;
+  height: 24px;
+  color: #e0e0e0;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
+.invalid_feedback {
+  position: absolute;
+  color: red;
+  font-size: 0.9rem;
+  top: 35px;
+  left: 50px;
+}
+
+.invalid_feedback_password {
+  position: absolute;
+  color: red;
+  font-size: 0.9rem;
+  top: 45px;
+  left: 50px;
+}
+
+.register_btn {
+  width: 300px;
+  height: 50px;
+  border: 0;
+  align-self: center;
+  background: #24cca7;
+  border-radius: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: var(--primary-font);
+  letter-spacing: 0.1em;
+  font-size: 18px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1247px) {
+  .form_wrapper {
+    top: 360px;
+    right: 50%;
+    transform: translateX(+50%);
+  }
+}
+
+@media screen and (max-width: 1247px) {
+  .wallet_img {
+    width: 30px;
+    height: 30px;
+  }
+  .form_title {
+    font-size: 25px;
+  }
+  .form_wrapper {
+    top: 0;
+    right: 50%;
+    padding: 0;
+    transform: translate(50%, 0);
+    width: 280px;
+  }
+  .register_btn {
+    width: 280px;
+  }
+}
+
+@import '../../style/vars.scss';
+
+.RegistrationForm {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid;
+
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  width: 533px;
+  height: 616px;
+  padding: 40px 62px 66px 62px;
+  position: absolute;
+  right: 91px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 1247px) {
+  .form_wrapper {
+    top: 360px;
+    right: 50%;
+    transform: translateX(+50%);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .form_wrapper {
+    top: 0;
+    right: 50%;
+    padding: 0;
+    transform: translate(50%, 0);
+    width: 280px;
+  }
+}
+
+.RegistrationForm__button {
+  display: block;
+  padding: 14px 58px;
+  margin: 0 auto;
+  width: 100%;
+
+  font-size: 18px;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  border: none;
+  border-radius: 20px;
+}
+
+.RegistrationForm__Navlink {
+  display: block;
+  padding: 14px 58px;
+
+  text-align: center;
+
+  margin: 0 auto;
+
+  border: 1px solid #4a56e2;
+  border-radius: 20px;
+}
+
+.MyText {
+  min-height: 82px;
+}
+
+.MyText__container {
+  position: relative;
+}
+
+.MyText__input {
+  padding: 12px;
+  padding-left: 40px;
+  width: 100%;
+
+  font-size: 18px;
+  background-color: none;
+
+  border: none;
+  border-bottom: 1px solid map-get($colors, 'secondary-back-color');
+
+  transition: border 250ms ease-in-out;
+
+  &:focus {
+    outline: none;
+
+    border-bottom: 1px solid #4a56e2;
+  }
+
+  &:focus ~ svg {
+    fill: #4a56e2;
+  }
+
+  &:invalid {
+    border-bottom: 2px solid #ff7d87;
+    box-shadow: none;
+  }
+}
+
+.MyText__icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+
+  fill: map-get($colors, 'secondary-back-color');
+  transition: fill 250ms ease-in-out;
+
+  transform: translateY(-50%);
+}
+
+.MyText__error {
+  color: red;
+}
