@@ -1,5 +1,6 @@
 import zxcvbn from 'zxcvbn';
-import styles from './RegistrationPage.module.scss';
+
+import css from './PasswordStrengthMeter.module.scss';
 
 const PasswordStrengthMeter = ({ password }) => {
   const testResult = zxcvbn(password);
@@ -11,8 +12,8 @@ const PasswordStrengthMeter = ({ password }) => {
 
   return (
     <>
-      <div className={styles.progress}>
-        <div className={styles.progress_bar} style={changePassword()}></div>
+      <div className={css.progress}>
+        <div className={css.progress_bar} style={changePassword()}></div>
       </div>
     </>
   );

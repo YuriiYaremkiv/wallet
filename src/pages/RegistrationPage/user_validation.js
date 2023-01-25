@@ -6,5 +6,5 @@ export const userSchema = yup.object().shape({
   confirm_password: yup
     .string()
     .oneOf([yup.ref('password'), null], 'passwords must match'),
-  name: yup.string().min(1).max(12).required(),
+  username: yup.string().min(1).max(12).required(),
 });
