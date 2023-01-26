@@ -7,7 +7,6 @@ import { Suspense } from 'react';
 import { selectIsloadingLogin } from 'redux/auth/authSelectors';
 
 import sprite from './icons/register-icons.svg';
-
 import { FormContainer } from 'block/FormContainer/FormContainer';
 
 export const RegisterPage = () => {

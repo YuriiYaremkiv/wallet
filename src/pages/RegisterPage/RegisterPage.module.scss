@@ -22,50 +22,60 @@
 @media screen and (min-width: 480px) {
   .RegisterPage {
     background-color: map-get($BgColors, 'secondary');
-    background-image: url('./images/bkg-img-tab.png'),
-      url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png');
+    background-image: url('../../images/leftElipse.png'),
+      url('../../images/rightElipse.png');
     background-repeat: no-repeat;
-    background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
-    background-size: 273px, 480px, 369px;
+    background-position: left 0 bottom 0, top 0 right 0;
+    background-size: 475px, 365px;
   }
-  .RegisterPage__title {
-    display: block;
+  .RegisterPage__modal {
+    top: 50%;
+    transform: translate(50%, -50%);
   }
 }
 
 @media screen and (min-width: 767px) {
   .RegisterPage {
-    background-color: #e7eaf2;
-    background-image: url('./images/bkg-img-tab.png'),
-      url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png');
+    background-image: url('../../images/bkgTab.png'),
+      url('../../images/leftElipse.png'), url('../../images/rightElipse.png');
     background-repeat: no-repeat;
     background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
-    background-size: 273px, 480px, 369px;
+    background-size: 280px, 490px, 375px;
   }
+
+  .RegisterPage__title {
+    display: block;
+    position: absolute;
+    top: 190px;
+    right: 140px;
+
+    font-family: Poppins;
+    font-style: Regular;
+    font-size: 30px;
+    line-height: 45px;
+    color: map-get($textColors, 'primary');
+  }
+
   .RegisterPage__modal {
     top: 360px;
+    transform: translate(50%);
   }
 }
 
-@media screen and (min-width: 1247px) {
+@media screen and (min-width: 1280px) {
   .RegisterPage {
-    background-image: url('./images/bkg-img-mac.png'),
-      url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png'),
+    background-image: url('../../images/bkgMac.png'),
+      url('../../images/leftElipse.png'), url('../../images/rightElipse.png'),
       linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
     background-repeat: no-repeat;
     background-position: left 76px center, left 0 bottom 0, top 0 right 0,
       center center;
     background-size: 452px, 444px, 602px, cover;
-
-    display: flex;
-    justify-content: center;
   }
 
-  .title {
-    color: var(--primary-text-color);
-    position: absolute;
-    top: 147px;
-    left: calc(50% + 50px);
+  .RegisterPage__title {
+    top: 700px;
+    left: 60px;
   }
 
   .RegisterPage__modal {
