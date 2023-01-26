@@ -1,14 +1,24 @@
-$colors: (
-  'primary-back-color': rgba(255, 255, 255, 1),
-  'secondary-back-color': #e0e0e0,
+$BgColors: (
+  'primary': #ffffff,
+  'secondary': #e0e0e0,
   'green-back-color': rgba(36, 204, 167, 1),
   'blue-back-color': rgba(74, 86, 226, 1),
 );
 
-/* global vars */
-$mobile: 480px;
-$tablet: 768px;
-$computer: 1280px;
+$textColors: (
+  'primary': #000000,
+  'secondary': #ffffff,
+  'blue': #4a56e2,
+  'red': #ff6596,
+  'green': #24cca7,
+  'gray': #bdbdbd,
+);
+
+$breakpoints: (
+  'mobile': '480px',
+  'tablet': '768px',
+  'computer': '1280px',
+);
 
 :root {
   /* text colors */

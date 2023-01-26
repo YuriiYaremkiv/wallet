@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
-import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 import HomeTab from './HomeTab/HomeTab';
 import DiagramTab from './DiagramTab/DiagramTab';
 import Currency from './Currency/Currency';
@@ -33,7 +33,7 @@ export const App = () => {
           path="registration"
           element={
             <PublicRoute restricted>
-              <RegistrationPage />
+              <RegisterPage />
             </PublicRoute>
           }
         />

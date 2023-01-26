@@ -1,14 +1,14 @@
 @import '../../style/vars.scss';
 
-.MyText {
+.MyTextInput {
   min-height: 82px;
 }
 
-.MyText__container {
+.MyTextInput__container {
   position: relative;
 }
 
-.MyText__input {
+.MyTextInput__input {
   padding: 12px;
   padding-left: 40px;
   width: 100%;
@@ -17,7 +17,7 @@
   background-color: none;
 
   border: none;
-  border-bottom: 1px solid map-get($colors, 'secondary-back-color');
+  border-bottom: 1px solid map-get($BgColors, 'secondary');
 
   transition: border 250ms ease-in-out;
 
@@ -37,17 +37,21 @@
   }
 }
 
-.MyText__icon {
+.MyTextInput__icon {
   position: absolute;
   left: 8px;
   top: 50%;
 
-  fill: map-get($colors, 'secondary-back-color');
+  fill: map-get($BgColors, 'secondary');
   transition: fill 250ms ease-in-out;
 
   transform: translateY(-50%);
 }
 
-.MyText__error {
+.MyTextInput__error {
   color: red;
+}
+.MyTextInput__children {
+  position: absolute;
+  width: 100%;
 }

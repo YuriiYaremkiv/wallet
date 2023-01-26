@@ -1,0 +1,41 @@
+.RegisterPage {
+  height: 100vh;
+  background-image: url('./images/bkg-img-mac.png'),
+    url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png'),
+    linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
+  background-repeat: no-repeat;
+  background-position: left 76px center, left 0 bottom 0, top 0 right 0,
+    center center;
+  background-size: 452px, 444px, 602px, cover;
+  display: relative;
+}
+
+.RegisterPage__title {
+  color: red;
+}
+
+@media screen and (max-width: 1247px) {
+  .RegisterPage {
+    background-color: #e7eaf2;
+    background-image: url('./images/bkg-img-tab.png'),
+      url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png');
+    background-repeat: no-repeat;
+    background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
+    background-size: 273px, 480px, 369px;
+  }
+  .title {
+    color: var(--primary-text-color);
+    position: absolute;
+    top: 147px;
+    left: calc(50% + 50px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .RegisterPage {
+    background: none;
+  }
+  .title {
+    display: none;
+  }
+}

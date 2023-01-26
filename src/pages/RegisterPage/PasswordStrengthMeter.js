@@ -12,8 +12,11 @@ const PasswordStrengthMeter = ({ password }) => {
 
   return (
     <>
-      <div className={css.progress}>
-        <div className={css.progress_bar} style={changePassword()}></div>
+      <div className={css.PasswordStrengthMeter}>
+        <div
+          className={css.PasswordStrengthMeter__bar}
+          style={changePassword()}
+        ></div>
       </div>
     </>
   );

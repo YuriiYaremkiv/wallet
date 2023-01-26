@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import { userSchema } from './user_validation';
-import { Formik, Form, ErrorMessage, useField } from 'formik';
+import { Formik, Form } from 'formik';
 import { register } from 'redux/auth/authOperations';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { StyledLink } from './RegPage.styled';
-import translation from '../../assets/translation/register.json';
-import { translationSelector } from 'redux/translation/translationSelectors';
-
-import styles from './RegForm.module.scss';
-import css from './RegForm.module.scss';
-
-import sprite from './icons/register-icons.svg';
 
 import { MyTextInput } from 'block/MyTextInput/MyTextInput';
 
-export default function RegForm() {
-  const language = useSelector(translationSelector);
+import css from './RegisterForm.module.scss';
+import sprite from './icons/register-icons.svg';
+
+export const RegisterForm = () => {
   const dispatch = useDispatch();
   const { error } = useAuth();
 
@@ -54,14 +49,14 @@ export default function RegForm() {
           <MyTextInput
             name="email"
             type="email"
-            placeholder={translation[language].email}
+            placeholder="Email"
             icon={sprite + '#email'}
           />
 
           <MyTextInput
             name="password"
             type="password"
-            placeholder={translation[language].password}
+            placeholder="Password"
             icon={sprite + '#lock'}
           >
             <PasswordStrengthMeter password={password} />
@@ -70,25 +65,25 @@ export default function RegForm() {
           <MyTextInput
             name="password"
             type="password"
-            placeholder={translation[language].confirm_password}
+            placeholder="Confirm password"
             icon={sprite + '#lock'}
           />
 
           <MyTextInput
             name="username"
             type="text"
-            placeholder={translation[language].name}
+            placeholder="First name"
             icon={sprite + '#user'}
           />
 
-          <button className={styles.register_btn} type="submit">
-            {translation[language].register}
+          <button className={css.RegisterForm_btn} type="submit">
+            Register
           </button>
 
-          <StyledLink to="/"> {translation[language].login}</StyledLink>
+          <StyledLink to="/"> LOG IN</StyledLink>
           {error && <p>{error}</p>}
         </Form>
       )}
     </Formik>
   );
-}
+};

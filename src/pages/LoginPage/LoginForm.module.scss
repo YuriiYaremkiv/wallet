@@ -239,7 +239,7 @@
   background-color: none;
 
   border: none;
-  border-bottom: 1px solid map-get($colors, 'secondary-back-color');
+  border-bottom: 1px solid map-get($BgColors, 'secondary');
 
   transition: border 250ms ease-in-out;
 
@@ -264,7 +264,7 @@
   left: 8px;
   top: 50%;
 
-  fill: map-get($colors, 'secondary-back-color');
+  fill: map-get($BgColors, 'secondary');
   transition: fill 250ms ease-in-out;
 
   transform: translateY(-50%);

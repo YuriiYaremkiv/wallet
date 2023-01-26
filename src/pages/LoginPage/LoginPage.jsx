@@ -20,7 +20,7 @@ const LoginPage = () => {
           <div className={styles.title_wrapper}>
             <img
               className={styles.wallet_img}
-              src={require('../RegistrationPage/images/icon.png')}
+              src={require('../RegisterPage/images/icon.png')}
               alt="wallet"
             />
             <h2 className={styles.form_title}>

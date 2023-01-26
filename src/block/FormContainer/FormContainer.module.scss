@@ -1,0 +1,43 @@
+@import '../../style/vars.scss';
+@import '../../style/mixins.scss';
+
+.FormContainer {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%, -50);
+
+  max-width: 550px;
+  width: 100%;
+  padding: 40px 60px 65px;
+
+  background-color: map-get($BgColors, 'primary');
+
+  border: 1px solid red;
+  border-radius: 20px;
+}
+
+.FormContainer__container {
+  @include flex-center;
+  margin-bottom: 50px;
+}
+.registrationPage__icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
+}
+
+.FormContainer__title {
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: 1.5;
+  font-size: 30px;
+  color: map-get($textColors, 'primary');
+}
+
+@media screen and (min-width: map-get($breakpoints, 'tablet')) {
+  .registrationPage__icon {
+    width: 40px;
+    height: 40px;
+  }
+}
