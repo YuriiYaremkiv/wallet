@@ -17,21 +17,28 @@ body {
 }
 
 .container {
-  max-width: 1280px;
+  border: 1px solid red;
+  position: relative;
+  max-width: 480px;
+  width: 100%;
   padding: 0 16px;
   margin: 0 auto;
+
+  height: 100vh;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (min-width: 767px) {
   .container {
-    max-width: 768px;
-    padding: 0 32px;
+    max-width: 767px;
+    padding: 0 20px;
+    margin: 0 auto;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 1279px) {
   .container {
-    max-width: 320px;
-    padding: 0 20px;
+    max-width: 1279px;
+    padding: 0 32px;
+    margin: 0 auto;
   }
 }

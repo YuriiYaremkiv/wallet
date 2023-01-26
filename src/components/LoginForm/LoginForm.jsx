@@ -1,19 +1,18 @@
 import { userSchema } from './user_validation';
-import { Formik, Form, useField } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
-import { StyledLink } from './LoginPage.styled';
-import translation from '../../assets/translation/register.json';
-import { translationSelector } from 'redux/translation/translationSelectors';
+// import { StyledLink } from './LoginPage.styled';
 
 import css from './LoginForm.module.scss';
 import sprite from './icons/register-icons.svg';
 
 import { MyTextInput } from 'block/MyTextInput/MyTextInput';
+import { Button } from 'block/Button/Button';
+import { NavlinkTo } from 'block/NavlinkTo/NavlinkTo';
 
-export default function LoginForm() {
-  const language = useSelector(translationSelector);
+export const LoginForm = () => {
   const { error } = useAuth();
   const dispatch = useDispatch();
 
@@ -41,27 +40,30 @@ export default function LoginForm() {
           <MyTextInput
             name="email"
             type="email"
-            placeholder={translation[language].email}
+            placeholder="E-mail"
             icon={sprite + '#email'}
           />
 
           <MyTextInput
             name="password"
             type="password"
-            placeholder={translation[language].password}
+            placeholder="Password"
             icon={sprite + '#lock'}
           />
 
-          <div className={css.input_wrapper}></div>
+          <Button title="Log IN" />
+          <NavlinkTo title="REGISTER" to="/register" />
+
+          {/* <div className={css.input_wrapper}></div>
           <button className={css.register_btn} type="submit">
             {translation[language].login}
-          </button>
-          <StyledLink to="/registration">
+          </button> */}
+          {/* <StyledLink to="/registration">
             {translation[language].register}
-          </StyledLink>
+          </StyledLink> */}
           {error && <p>{error}</p>}
         </Form>
       )}
     </Formik>
   );
-}
+};

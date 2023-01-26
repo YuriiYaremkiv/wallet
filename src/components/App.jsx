@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
+import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 import HomeTab from './HomeTab/HomeTab';
 import DiagramTab from './DiagramTab/DiagramTab';
@@ -30,7 +30,7 @@ export const App = () => {
           }
         />
         <Route
-          path="registration"
+          path="register"
           element={
             <PublicRoute restricted>
               <RegisterPage />

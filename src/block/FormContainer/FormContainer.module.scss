@@ -2,18 +2,12 @@
 @import '../../style/mixins.scss';
 
 .FormContainer {
-  position: absolute;
-  left: 50%;
-  right: 50%;
-  transform: translateX(-50%, -50);
-
-  max-width: 550px;
   width: 100%;
+  max-width: 550px;
   padding: 40px 60px 65px;
 
   background-color: map-get($BgColors, 'primary');
 
-  border: 1px solid red;
   border-radius: 20px;
 }
 

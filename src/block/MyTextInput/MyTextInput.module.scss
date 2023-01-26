@@ -1,7 +1,7 @@
 @import '../../style/vars.scss';
 
 .MyTextInput {
-  min-height: 82px;
+  min-height: 76px;
 }
 
 .MyTextInput__container {
@@ -19,20 +19,19 @@
   border: none;
   border-bottom: 1px solid map-get($BgColors, 'secondary');
 
-  transition: border 250ms ease-in-out;
+  transition: border map-get($effect, 'timer') map-get($effect, 'function');
 
   &:focus {
     outline: none;
-
-    border-bottom: 1px solid #4a56e2;
+    border-bottom: 1px solid map-get($BgColors, 'blue');
   }
 
   &:focus ~ svg {
-    fill: #4a56e2;
+    fill: map-get($BgColors, 'blue');
   }
 
   &:invalid {
-    border-bottom: 2px solid #ff7d87;
+    border-bottom: 1px solid map-get($BgColors, 'error');
     box-shadow: none;
   }
 }
@@ -43,13 +42,13 @@
   top: 50%;
 
   fill: map-get($BgColors, 'secondary');
-  transition: fill 250ms ease-in-out;
 
+  transition: fill map-get($effect, 'timer') map-get($effect, 'function');
   transform: translateY(-50%);
 }
 
 .MyTextInput__error {
-  color: red;
+  color: map-get($textColors, 'error');
 }
 .MyTextInput__children {
   position: absolute;

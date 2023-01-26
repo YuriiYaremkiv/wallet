@@ -1,0 +1,37 @@
+@import '../../style/vars.scss';
+@import '../../style/mixins.scss';
+
+.RegisterForm_Navlink {
+  display: block;
+  margin: 0 auto;
+
+  max-width: 278px;
+  min-height: 48px;
+
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  color: map-get($textColors, 'blue');
+  text-transform: uppercase;
+
+  background-color: transparent;
+  border: 1px solid map-get($BgColors, 'blue');
+  border-radius: 20px;
+  cursor: pointer;
+
+  @include flex-center;
+
+  transition: background-color 300ms linear, color 300ms linear;
+
+  &:hover,
+  &:focus {
+    color: map-get($textColors, 'secondary');
+    background-color: lighten(map-get($textColors, 'blue'), 20%);
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, 'tablet')) {
+  .RegisterForm_Navlink {
+    max-width: 300px;
+  }
+}

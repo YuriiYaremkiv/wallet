@@ -1,8 +1,10 @@
 $BgColors: (
   'primary': #ffffff,
   'secondary': #e0e0e0,
-  'green-back-color': rgba(36, 204, 167, 1),
-  'blue-back-color': rgba(74, 86, 226, 1),
+  'green': #24cca7,
+  'blue': #4a56e2,
+  'red': #ff6596,
+  'error': red,
 );
 
 $textColors: (
@@ -12,12 +14,18 @@ $textColors: (
   'red': #ff6596,
   'green': #24cca7,
   'gray': #bdbdbd,
+  'error': red,
 );
 
 $breakpoints: (
-  'mobile': '480px',
-  'tablet': '768px',
-  'computer': '1280px',
+  'mobile': 480px,
+  'tablet': 768px,
+  'computer': 1280px,
+);
+
+$effect: (
+  'timer': 250ms,
+  'function': ease-in-out,
 );
 
 :root {

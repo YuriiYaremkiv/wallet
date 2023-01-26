@@ -1,20 +1,39 @@
+@import '../../style/vars.scss';
+
 .RegisterPage {
   height: 100vh;
-  background-image: url('./images/bkg-img-mac.png'),
-    url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png'),
-    linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
-  background-repeat: no-repeat;
-  background-position: left 76px center, left 0 bottom 0, top 0 right 0,
-    center center;
-  background-size: 452px, 444px, 602px, cover;
-  display: relative;
+  background-color: map-get($BgColors, 'primary');
 }
 
 .RegisterPage__title {
-  color: red;
+  display: none;
 }
 
-@media screen and (max-width: 1247px) {
+.RegisterPage__modal {
+  position: absolute;
+  right: 50%;
+
+  width: 100%;
+  max-width: 550px;
+
+  transform: translateX(50%);
+}
+
+@media screen and (min-width: 480px) {
+  .RegisterPage {
+    background-color: map-get($BgColors, 'secondary');
+    background-image: url('./images/bkg-img-tab.png'),
+      url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png');
+    background-repeat: no-repeat;
+    background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
+    background-size: 273px, 480px, 369px;
+  }
+  .RegisterPage__title {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 767px) {
   .RegisterPage {
     background-color: #e7eaf2;
     background-image: url('./images/bkg-img-tab.png'),
@@ -23,19 +42,36 @@
     background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
     background-size: 273px, 480px, 369px;
   }
+  .RegisterPage__modal {
+    top: 360px;
+  }
+}
+
+@media screen and (min-width: 1247px) {
+  .RegisterPage {
+    background-image: url('./images/bkg-img-mac.png'),
+      url('./images/left-elipse-mac.png'), url('./images/right-elipse-mac.png'),
+      linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
+    background-repeat: no-repeat;
+    background-position: left 76px center, left 0 bottom 0, top 0 right 0,
+      center center;
+    background-size: 452px, 444px, 602px, cover;
+
+    display: flex;
+    justify-content: center;
+  }
+
   .title {
     color: var(--primary-text-color);
     position: absolute;
     top: 147px;
     left: calc(50% + 50px);
   }
-}
 
-@media screen and (max-width: 767px) {
-  .RegisterPage {
-    background: none;
-  }
-  .title {
-    display: none;
+  .RegisterPage__modal {
+    top: 50%;
+    right: 90px;
+    transform: translateX(0);
+    transform: translateY(-50%);
   }
 }

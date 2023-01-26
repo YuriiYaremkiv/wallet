@@ -6,12 +6,12 @@ import { Formik, Form } from 'formik';
 import { register } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
-import { StyledLink } from './RegPage.styled';
 
 import { MyTextInput } from 'block/MyTextInput/MyTextInput';
+import { Button } from 'block/Button/Button';
 
-import css from './RegisterForm.module.scss';
 import sprite from './icons/register-icons.svg';
+import { NavlinkTo } from 'block/NavlinkTo/NavlinkTo';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -75,12 +75,9 @@ export const RegisterForm = () => {
             placeholder="First name"
             icon={sprite + '#user'}
           />
+          <Button title="REGISTER" />
 
-          <button className={css.RegisterForm_btn} type="submit">
-            Register
-          </button>
-
-          <StyledLink to="/"> LOG IN</StyledLink>
+          <NavlinkTo title="LOG IN" to="/" />
           {error && <p>{error}</p>}
         </Form>
       )}

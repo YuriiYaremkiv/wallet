@@ -1,6 +1,6 @@
 import css from './RegisterPage.module.scss';
 
-import { RegisterForm } from './RegisterForm';
+import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
 import Loader from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { Suspense } from 'react';
@@ -17,10 +17,11 @@ export const RegisterPage = () => {
     <div className={css.RegisterPage}>
       <div className="container">
         <h1 className={css.RegisterPage__title}>Finance App</h1>
-        <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
-          <RegisterForm />
-        </FormContainer>
-        This is now
+        <div className={css.RegisterPage__modal}>
+          <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
+            <RegisterForm />
+          </FormContainer>
+        </div>
         <Suspense fallback={<Loader />}></Suspense>
         {isLoading && <Loader />}
       </div>

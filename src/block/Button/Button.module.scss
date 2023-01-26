@@ -1,0 +1,36 @@
+@import '../../style/vars.scss';
+@import '../../style/mixins.scss';
+
+.RegisterForm__Btn {
+  display: block;
+  max-width: 280px;
+  width: 100%;
+  min-height: 50px;
+
+  margin: 20px auto 20px auto;
+
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  color: map-get($textColors, 'secondary');
+  text-transform: uppercase;
+
+  background-color: map-get($BgColors, 'green');
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+
+  transition: background-color map-get($effect, 'timer')
+    map-get($effect, 'function');
+
+  &:hover,
+  &:focus {
+    background-color: lighten(map-get($BgColors, 'green'), 10%);
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, 'tablet')) {
+  .RegisterForm__Btn {
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,47 @@
+.registration_page {
+  height: 100vh;
+  background-image: url('./images/bkg-img-mac.png'),
+    url('../RegisterPage/images/left-elipse-mac.png'),
+    url('../RegisterPage/images/right-elipse-mac.png'),
+    linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
+  background-repeat: no-repeat;
+  background-position: left 76px center, left 0 bottom 0, top 0 right 0,
+    center center;
+  background-size: 452px, 444px, 602px, cover;
+}
+
+.title {
+  font-family: var(--secondary-font);
+  color: var(--primary-text-color);
+  font-size: 30px;
+  line-height: 1.5;
+  position: absolute;
+  left: 220px;
+  top: calc(50% + 240px);
+}
+
+@media screen and (max-width: 1247px) {
+  .registration_page {
+    background-color: #e7eaf2;
+    background-image: url('./images/bkg-img-tab.png'),
+      url('../RegisterPage/images/left-elipse-mac.png'),
+      url('../RegisterPage/images/right-elipse-mac.png');
+    background-repeat: no-repeat;
+    background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
+    background-size: 273px, 480px, 369px;
+  }
+  .title {
+    position: absolute;
+    top: 147px;
+    left: calc(50% + 50px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .registration_page {
+    background: none;
+  }
+  .title {
+    display: none;
+  }
+}
