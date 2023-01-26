@@ -64,24 +64,40 @@
 
 @media screen and (min-width: 1280px) {
   .RegisterPage {
-    background-image: url('../../images/bkgMac.png'),
-      url('../../images/leftElipse.png'), url('../../images/rightElipse.png'),
+    background-image: url('../../images/leftElipse.png'),
+      url('../../images/rightElipse.png'),
       linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
     background-repeat: no-repeat;
-    background-position: left 76px center, left 0 bottom 0, top 0 right 0,
-      center center;
-    background-size: 452px, 444px, 602px, cover;
+    background-position: left 0 bottom 0, top 0 right 0, center center;
+    background-size: 450px, 575px, cover;
   }
 
   .RegisterPage__title {
-    top: 700px;
+    top: 50%;
     left: 60px;
+
+    transform: translateY(250px);
   }
 
   .RegisterPage__modal {
     top: 50%;
     right: 90px;
     transform: translateX(0);
+    transform: translateY(-50%);
+  }
+
+  .RegisterPage__img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 450px;
+    height: 450px;
+
+    background-image: url('../../images/bkgMac.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 450px, cover;
+
     transform: translateY(-50%);
   }
 }

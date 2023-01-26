@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Balance from 'components/Balance/Balance';
 import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
-import css from './DashboardPage.module.css';
+import css from './DashboardPage.module.scss';
 import Loader from 'components/Loader/Loader';
 import { useSelector, useDispatch } from 'react-redux';
 import { Suspense, useEffect } from 'react';
@@ -13,19 +13,19 @@ import { fetchTransactions } from 'redux/transactions/transactionsOperations';
 import { fetchTransactionCategories } from 'redux/transactions/transactionsOperations';
 
 const DashboardPage = () => {
-  const dispatch = useDispatch()
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchTransactionCategories())
-  }, [dispatch])
+    dispatch(fetchTransactionCategories());
+  }, [dispatch]);
 
-
-  const isLoading = useSelector(selectIsLoading);
   return (
-    <section className={css.dashboard}>
+    <section className={css.DashboardPage}>
       <div className={css.dashboard__wrapper}>
         <Header />
         <div className="container">

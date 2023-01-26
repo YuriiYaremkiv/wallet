@@ -14,6 +14,7 @@ import sprite from './icons/register-icons.svg';
 import { NavlinkTo } from 'block/NavlinkTo/NavlinkTo';
 
 export const RegisterForm = () => {
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const { error } = useAuth();
 
@@ -22,7 +23,7 @@ export const RegisterForm = () => {
       setPassword(target.value);
     }
   };
-  const [password, setPassword] = useState('');
+
   return (
     <Formik
       initialValues={{
@@ -63,7 +64,7 @@ export const RegisterForm = () => {
           </MyTextInput>
 
           <MyTextInput
-            name="password"
+            name="confirm_password"
             type="password"
             placeholder="Confirm password"
             icon={sprite + '#lock'}

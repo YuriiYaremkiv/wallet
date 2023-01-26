@@ -15,6 +15,7 @@ export const RegisterPage = () => {
   return (
     <div className={css.RegisterPage}>
       <div className="container">
+        <div className={css.RegisterPage__img}></div>
         <h1 className={css.RegisterPage__title}>Finance App</h1>
         <div className={css.RegisterPage__modal}>
           <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
