@@ -1,4 +1,4 @@
-import styles from './Currency.module.css';
+import styles from './Currency.module.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Circles } from 'react-loader-spinner';

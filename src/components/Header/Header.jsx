@@ -1,39 +1,33 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import css from './Header.module.scss';
-import logoImage from './images/wallet-logo.png';
-import LogoutFeature from 'components/LogoutFeature/LogoutFeature';
-import LanguageToggler from 'components/LanguageToggler/LanguageToggler';
-import translation from 'assets/translation/header.json';
-import { translationSelector } from 'redux/translation/translationSelectors';
 
+import css from './Header.module.scss';
 import sprite from '../../images/icons/icons.svg';
 
-const Header = () => {
-  const language = useSelector(translationSelector);
+import { LogOutForm } from 'components/LogOutForm/LogOutForm';
+
+export const Header = () => {
   const userName = useSelector(state => state.auth.user.username);
 
   return (
     <header className={css.header}>
       <div className="container">
         <div className={css.header__container}>
-          <span className={css.header__logo__text}>
-            <svg className={css.header__icon}>
+          <div className={css.logo}>
+            <svg className={css.logo__icon}>
               <use href={sprite + '#wallet'}></use>
             </svg>
-            {translation[language].wallet}
-          </span>
-
-          <div className={css.header__menu}>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <span className={css.header__menu__name}>{userName}</span>
-              <LogoutFeature />
-            </div>
+            <span className={css.logo__text}>Wallet</span>
+          </div>
+          <div className={css.menu}>
+            <span className={css.menu__name}>{userName}</span>
+            <LogOutForm>
+              <svg className={css.menu__exitIcon}>
+                <use href={sprite + '#exit'}></use>
+              </svg>
+            </LogOutForm>
           </div>
         </div>
       </div>
     </header>
   );
 };
-
-export default Header;

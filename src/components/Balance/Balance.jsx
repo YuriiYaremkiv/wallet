@@ -1,22 +1,19 @@
 import { useSelector } from 'react-redux';
-import css from './Balance.module.css';
-import translation from 'assets/translation/balance.json';
-import { translationSelector } from 'redux/translation/translationSelectors';
 
-const Balance = () => {
-  const language = useSelector(translationSelector);
+import css from './Balance.module.scss';
+
+export const Balance = () => {
   const userBalance = useSelector(state => state.auth.user.balance);
+  const balance = userBalance
+    .toString()
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
 
   return (
     <div className={css.balance}>
-      <span className={css.balance__title}>
-        {translation[language].balance}
-      </span>
+      <span className={css.balance__title}>YOUR BALANCE</span>
       <p className={css.balance__sum}>
-        <span>₴</span> {userBalance}
+        <span>{balance} $</span>
       </p>
     </div>
   );
 };
-
-export default Balance;

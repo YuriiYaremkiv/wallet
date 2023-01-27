@@ -10,6 +10,8 @@ import translation from 'assets/translation/home_tab.json';
 import { translationSelector } from 'redux/translation/translationSelectors';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
+import { OperationList } from 'components/OperationList/OperationList';
+
 const HomeTab = () => {
   const language = useSelector(translationSelector);
   const transactions = useSelector(selectTransactions);
@@ -26,6 +28,12 @@ const HomeTab = () => {
   return (
     <>
       <Media
+        query="(max-width:767px)"
+        render={() => (
+          <OperationList transactions={transactions} onDelete={onDelete} />
+        )}
+      />
+      {/* <Media
         query="(max-width:767px)"
         render={() => (
           <div className={s.tableWrapMob}>
@@ -106,7 +114,8 @@ const HomeTab = () => {
             <ButtonAddTransactions />
           </div>
         )}
-      />
+      /> */}
+      {/* **************************************************************** */}
       <Media
         query="(min-width:768px)"
         render={() => (

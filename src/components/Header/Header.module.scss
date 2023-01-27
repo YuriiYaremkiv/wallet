@@ -2,14 +2,6 @@
 
 .header {
   background-color: map-get($BgColors, 'primary');
-  // height: 80px;
-}
-
-.header__icon {
-  width: 30px;
-  height: 30px;
-
-  margin-right: 16px;
 }
 
 .header__container {
@@ -18,72 +10,90 @@
   justify-content: space-between;
 }
 
-.header__logo {
-  padding: 20px 0;
+.logo {
   display: flex;
   align-items: center;
-  gap: 20px;
+  padding: 15px 0 15px 0;
 }
 
-@media screen and (max-width: 768px) {
-  .header__logo {
-    padding: 15px 0;
-    gap: 15.5px;
-  }
+.logo__icon {
+  margin-right: 16px;
+  width: 30px;
+  height: 30px;
 }
 
-.header__logo__icon {
+.logo__text {
   display: block;
-}
 
-@media screen and (max-width: 768px) {
-  .header__logo__icon {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.header__logo__text {
-  display: block;
-  font-size: 30px;
-  font-family: var(--secondary-font);
+  font-size: 25px;
+  font-family: Poppins;
+  line-height: 1;
   font-weight: 700;
-  color: var(--primary-text-color);
+  color: map-get($textColors, 'primary');
 }
 
-@media screen and (max-width: 768px) {
-  .header__logo__text {
-    font-size: 24px;
-  }
-}
-
-.header__menu {
+.menu {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-direction: column;
 }
 
-@media screen and (max-width: 768px) {
-  .header__menu {
-    gap: 8px;
-  }
-}
-
-.header__menu__name {
+.menu__name {
+  position: relative;
   display: block;
   padding: 0 12px 0 0;
-  color: var(--gray-text-color);
-  border-right: 1px solid var(--gray-text-color);
+
   font-size: 18px;
-  line-height: 1.4;
+  line-height: 1;
+  color: map-get($textColors, 'gray');
+  text-transform: capitalize;
 }
 
-@media screen and (max-width: 768px) {
-  .header__menu__name {
-    padding: 0;
-    border: none;
+.menu__exitIcon {
+  width: 18px;
+  height: 18px;
+
+  fill: map-get($textColors, 'gray');
+
+  transition: fill map-get($effect, 'timer') map-get($effect, 'function'),
+    transform map-get($effect, 'timer') map-get($effect, 'function');
+
+  &:hover {
+    fill: map-get($textColors, 'blue');
+    transform: scale(1.05);
   }
-  .header__menu {
+}
+
+@media screen and (min-width: map-get($breakpoints, 'tablet')) {
+  .logo {
+    align-items: baseline;
+  }
+
+  .logo__icon {
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo__text {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+
+  .menu__name {
+    margin-right: 24px;
+    padding-right: 0;
+  }
+
+  .menu__name::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+
+    width: 1px;
+    height: 30px;
+    background-color: map-get($textColors, 'gray');
+
+    transform: translateY(-50%);
   }
 }
