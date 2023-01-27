@@ -8,11 +8,22 @@
   overflow-x: hidden;
 }
 
-.operations__list {
+.operations__listAdd {
   padding: 6px 0;
 
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 0/5;
+  color: map-get($textColors, 'primary');
+
   background-color: map-get($BgColors, 'primary');
-  border-radius: 10px;
+  background-image: linear-gradient(
+    to right,
+    map-get($textColors, 'green') 2%,
+    transparent 2%,
+    transparent
+  );
+  border-radius: 16px;
 
   & > li:not(:last-child) {
     display: flex;
@@ -20,14 +31,6 @@
     padding: 6px 20px;
 
     border-bottom: 1px solid map-get($BgColors, 'secondary');
-  }
-
-  & p {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 0/5;
-
-    color: map-get($textColors, 'primary');
   }
 
   & p:first-child {
@@ -38,146 +41,67 @@
   }
 }
 
-.operations__balance {
-  color: red;
+.operations__listRem {
+  padding: 6px 0;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 0/5;
+  color: map-get($textColors, 'primary');
+
+  background-color: map-get($BgColors, 'primary');
+  background-image: linear-gradient(
+    to right,
+    map-get($textColors, 'red') 2%,
+    transparent 2%,
+    transparent
+  );
+  border-radius: 16px;
+
+  & > li:not(:last-child) {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 20px;
+
+    border-bottom: 1px solid map-get($BgColors, 'secondary');
+  }
+
+  & p:first-child {
+    font-weight: 700;
+    font-size: 18px;
+
+    color: map-get($textColors, 'primary');
+  }
+}
+
+.operations__balanceAdd {
+  font-weight: 700;
+  color: map-get($textColors, 'red');
+}
+
+.operations__balanceRem {
+  font-weight: 700;
+  color: map-get($textColors, 'green');
 }
 
 .operation__btn {
   display: block;
   margin: 12px auto;
-  padding: 6px 16px;
-}
+  padding: 8px 32px;
 
-/**************************************************************************************/
-.scrollTableBodyMob {
-  height: calc(100vh - 337px);
-  overflow-x: hidden;
-  margin-top: 0px;
-  margin-bottom: 20px;
-}
+  font-size: 18px;
+  color: map-get($textColors, 'secondary');
 
-.scrollTableMob table {
-  width: 100%;
-  table-layout: fixed;
-  text-align: center;
-  border-collapse: collapse;
-  margin-bottom: 10px;
-}
-
-td.positive {
-  color: rgb(36, 204, 167);
-}
-
-td.negative {
-  color: rgb(255, 102, 150);
-}
-
-.scrollTableMob table tr {
-  background-color: var(--primary-back-color);
-}
-
-.scrollTableMob table tr td:nth-child(2) {
-  text-align: right;
-  padding: 10px 15px;
-}
-
-.scrollTableMob table tr td:not(:last-child) {
-  padding: 10px 15px;
-  font-size: 16px;
-}
-
-.scrollTableMob table tr :not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.308);
-}
-
-.scrollTableMob table tr > td:first-child {
-  text-align: left;
-  font-weight: 700;
-  z-index: -1;
-  left: 10px;
-}
-
-.scrollTableMob table tr :not(:first-child, :last-child) {
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
-
-.scrollTableMob table tr:first-child > td:first-child {
-  border-top-left-radius: 20px;
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
-
-.scrollTableMob table tr:first-child > td:nth-child(2) {
-  border-top-right-radius: 20px;
-}
-
-.scrollTableMob table tr:last-child > td:first-child {
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
-
-.scrollTableMob table tr:last-child > td:nth-child(2) {
-  border-bottom-right-radius: 20px;
-}
-
-table.tablePositive tr:not(:first-child, :last-child) {
-  box-shadow: inset 4px 0px 0px rgb(36, 204, 167);
-}
-
-table.tablePositive tr:first-child > td:first-child {
-  box-shadow: inset 4px 0px 0px rgb(36, 204, 167);
-}
-
-table.tablePositive tr:last-child > td:first-child {
-  box-shadow: inset 4px 0px 0px rgb(36, 204, 167);
-}
-
-table.tableNegative tr:not(:first-child, :last-child) {
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
-
-.scrollTableBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  border-radius: 5px;
-  outline: none;
+  border-radius: 10px;
   border: none;
-  margin: 0 auto;
-  background-color: #6e78e8;
+
+  background-color: map-get($BgColors, 'blue');
+  transform: scaleY(1);
   opacity: 0.9;
   cursor: pointer;
-}
 
-.scrollTableBtn:hover,
-.scrollTableBtn:focus {
-  opacity: 1;
-}
-
-.scrollTableBtnMob {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 10px 15px;
-  border-radius: 0 0 20px 20px;
-  outline: 1px solid #6e78e8;
-  border: none;
-  margin: 0 auto;
-  color: #fff;
-  background-color: #6e78e8;
-  transform: scaleY(1.2);
-  opacity: 0.9;
-  cursor: pointer;
-  font-family: var(--primary-font);
-  letter-spacing: 0.4em;
-}
-
-.scrollTableBtnMob:hover,
-.scrollTableBtnMob:focus {
-  opacity: 1;
-}
-
-.noTransactionMob {
-  text-align: center;
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 }

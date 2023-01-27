@@ -25,7 +25,6 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
   const dispatch = useDispatch();
   const categories = useSelector(selectTransactionCategories);
 
-
   const initialValue = {
     type: 'EXPENSE',
     amount: '',
@@ -57,7 +56,8 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
     comment,
     amount,
   }) => {
-    const correctAmmount = type === 'EXPENSE' ? Number('-' + amount) : amount;
+    const correctAmmount =
+      type === 'EXPENSE' ? Number('-' + amount.toFixed(2)) : amount.toFixed(2);
 
     try {
       await dispatch(
@@ -70,15 +70,12 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
               : categoryId,
           comment,
           amount: correctAmmount,
-
         })
       ).unwrap();
       onClose();
-
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     }
-
 
     dispatch(refreshUser());
   };
@@ -90,7 +87,6 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
     }
     return error;
   }
-
 
   return (
     <div className={css.overlay} onClick={onClickBackdrop}>
@@ -112,7 +108,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
           }}
         >
           {formik => (
-            <Form >
+            <Form>
               <div className={css.modalWrappenTransaction}>
                 {isToggled ? (
                   <p className={css.activeTransactionIncome}>Income</p>
@@ -205,7 +201,6 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
                     name="transactionDate"
                     timeFormat={false}
                     component={FormikDateTime}
-
                   />
                   <ErrorMessage
                     name="transactionDate"
@@ -234,10 +229,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
               >
                 Add
               </button>
-              <button
-                className={css.btnCancel}
-                onClick={onClose}
-              >
+              <button className={css.btnCancel} onClick={onClose}>
                 Cancel
               </button>
             </Form>

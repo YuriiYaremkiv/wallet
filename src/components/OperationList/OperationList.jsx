@@ -21,7 +21,14 @@ export const OperationList = ({ transactions, onDelete }) => {
               amount,
               balanceAfter,
             }) => (
-              <ul key={id} className={css.operations__list}>
+              <ul
+                key={id}
+                className={
+                  type === 'EXPENSE'
+                    ? css.operations__listRem
+                    : css.operations__listAdd
+                }
+              >
                 <li>
                   <p>Date</p>
                   <p>{transactionDate}</p>
@@ -43,11 +50,19 @@ export const OperationList = ({ transactions, onDelete }) => {
                 </li>
                 <li>
                   <p>Sum</p>
-                  <p>{amount}</p>
+                  <p
+                    className={
+                      type === 'EXPENSE'
+                        ? css.operations__balanceAdd
+                        : css.operations__balanceRem
+                    }
+                  >
+                    {amount}
+                  </p>
                 </li>
                 <li>
                   <p>Balance</p>
-                  <p className={css.operations__balance}>{balanceAfter}</p>
+                  <p>{balanceAfter}</p>
                 </li>
                 <li>
                   <button
@@ -65,62 +80,3 @@ export const OperationList = ({ transactions, onDelete }) => {
     </div>
   );
 };
-
-//     <table
-//       className={
-//         operation.amount > 0 ? css.tablePositive : css.tableNegative
-//       }
-//       key={operation.id}
-//     >
-//       <tbody>
-//         <tr>
-//           <td>Date</td>
-//           <td>
-//             {new Date(operation.transactionDate)
-//               .toLocaleDateString()
-//               .split('.')
-//               .join('-')}
-//           </td>
-//         </tr>
-//         <tr>
-//           <td>Type</td>
-//           <td>{operation.type !== 'EXPENSE' ? '+' : '-'}</td>
-//         </tr>
-
-//         <tr>
-//           <td>Category</td>
-//           <td>
-//             {categoriesList.length &&
-//               categoriesList.find(
-//                 cat => cat.id === operation.categoryId
-//               ).name}
-//           </td>
-//         </tr>
-//         <tr>
-//           <td>Comment</td>
-//           <td>{operation.comment || '-'}</td>
-//         </tr>
-//         <tr>
-//           <td>Sum</td>
-//           <td>{operation.amount}</td>
-//         </tr>
-//         <tr>
-//           <td>Balance</td>
-//           <td>{operation.balanceAfter}</td>
-//         </tr>
-//         <tr>
-//           <td colspan="2">
-//             <button
-//               type="button"
-//               className={css.scrollTableBtnMob}
-//               onClick={() => onDelete(operation.id, operation.amount)}
-//             >
-//               Delete
-//             </button>
-//           </td>
-//         </tr>
-//       </tbody>
-//     </table>
-//   ))
-// ) : (
-//   <p className={css.noTransactionMob}>No transactions</p>
