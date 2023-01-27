@@ -1,23 +1,54 @@
-// .tableWrapMob {
-//   max-width: 100%;
-// }
+@import '../../style/vars.scss';
+
 .operations {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  border: 1px solid green;
-  // height: 100vh;
+  gap: 10px;
+  height: calc(100vh - 320px);
+  overflow-x: hidden;
 }
 
 .operations__list {
-  border: 1px solid red;
+  padding: 6px 0;
 
-  & > li {
+  background-color: map-get($BgColors, 'primary');
+  border-radius: 10px;
+
+  & > li:not(:last-child) {
     display: flex;
     justify-content: space-between;
+    padding: 6px 20px;
+
+    border-bottom: 1px solid map-get($BgColors, 'secondary');
+  }
+
+  & p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 0/5;
+
+    color: map-get($textColors, 'primary');
+  }
+
+  & p:first-child {
+    font-weight: 700;
+    font-size: 18px;
+
+    color: map-get($textColors, 'primary');
   }
 }
 
+.operations__balance {
+  color: red;
+}
+
+.operation__btn {
+  display: block;
+  margin: 12px auto;
+  padding: 6px 16px;
+}
+
+/**************************************************************************************/
 .scrollTableBodyMob {
   height: calc(100vh - 337px);
   overflow-x: hidden;

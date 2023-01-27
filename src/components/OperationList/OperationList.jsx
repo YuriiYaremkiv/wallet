@@ -47,10 +47,14 @@ export const OperationList = ({ transactions, onDelete }) => {
                 </li>
                 <li>
                   <p>Balance</p>
-                  <p>{balanceAfter}</p>
+                  <p className={css.operations__balance}>{balanceAfter}</p>
                 </li>
                 <li>
-                  <button type="button" onClick={() => onDelete(id, amount)}>
+                  <button
+                    className={css.operation__btn}
+                    type="button"
+                    onClick={() => onDelete(id, amount)}
+                  >
                     Delete
                   </button>
                 </li>
