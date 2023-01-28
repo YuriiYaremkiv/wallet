@@ -1,7 +1,7 @@
 import css from './RegisterPage.module.scss';
 
 import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
-import Loader from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { Suspense } from 'react';
 import { selectIsloadingLogin } from 'redux/auth/authSelectors';

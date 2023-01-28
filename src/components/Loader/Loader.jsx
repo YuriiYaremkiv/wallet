@@ -1,33 +1,14 @@
-import { Vortex } from 'react-loader-spinner';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
-const Loader = () => {
+import css from './Loader.module.scss';
+
+export const Loader = () => {
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '100vh',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        zIndex: '1000',
-        transform: 'translate(-50%, -50%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-      }}
-    >
-      <Vortex
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="vortex-loading"
-        wrapperStyle={{}}
-        wrapperClass="vortex-wrapper"
-        colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-      />
+    <div className={css.loader}>
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
     </div>
   );
 };
-
-export default Loader;

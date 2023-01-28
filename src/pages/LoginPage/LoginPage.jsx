@@ -1,5 +1,5 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
-import Loader from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { Suspense } from 'react';
 import { selectIsloadingLogin } from 'redux/auth/authSelectors';

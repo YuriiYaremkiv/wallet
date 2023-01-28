@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectTransactionCategories } from 'redux/transactions/transactionsSelectors';
 
 import css from './OperationList.module.scss';
+import { CommentHover } from 'block/CommentHover/CommentHover';
 
 export const OperationList = ({ transactions, onDelete }) => {
   const categories = useSelector(selectTransactionCategories);
@@ -46,7 +47,7 @@ export const OperationList = ({ transactions, onDelete }) => {
                 </li>
                 <li>
                   <p>Comment</p>
-                  <p>{comment || '-'}</p>
+                  {comment ? <CommentHover comment={comment} /> : <p>-</p>}
                 </li>
                 <li>
                   <p>Sum</p>
@@ -57,12 +58,12 @@ export const OperationList = ({ transactions, onDelete }) => {
                         : css.operations__balanceRem
                     }
                   >
-                    {amount}
+                    {amount.toFixed(2)}
                   </p>
                 </li>
                 <li>
                   <p>Balance</p>
-                  <p>{balanceAfter}</p>
+                  <p>{balanceAfter.toFixed(2)}</p>
                 </li>
                 <li>
                   <button

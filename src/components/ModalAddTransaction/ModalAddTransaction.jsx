@@ -1,4 +1,3 @@
-import css from './ModalAddTransaction.module.css';
 import moment from 'moment';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { transactionSchema } from './transaction_validation';
@@ -7,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
 import 'react-datetime/css/react-datetime.css';
 import calendar from './images/calendar.svg';
-import modalCloseIcon from './images/close.svg';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTransaction } from 'redux/transactions/transactionsOperations';
@@ -18,9 +16,14 @@ import { selectTransactionCategories } from 'redux/transactions/transactionsSele
 import { refreshUser } from 'redux/auth/authOperations';
 import FormikDateTime from './FormicDatetime';
 
+import css from './ModalAddTransaction.module.scss';
+import sprite from './icons/icons.svg';
+
+import CloseIcon from '@mui/icons-material/Close';
+
 const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
   const [type, setType] = useState('EXPENSE');
-  const [isToggled, setIsToggled] = useState(false);
+  const [toogle, setToogle] = useState(false);
 
   const dispatch = useDispatch();
   const categories = useSelector(selectTransactionCategories);
@@ -33,7 +36,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
     comment: '',
   };
   const onToggle = (setFieldValue, resetForm, values) => {
-    setIsToggled(!isToggled);
+    setToogle(!toogle);
     console.log(values.target.checked);
     if (values.target.checked) {
       setType(type);
@@ -89,16 +92,12 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
   }
 
   return (
-    <div className={css.overlay} onClick={onClickBackdrop}>
+    <div className={css.backdrop} onClick={onClickBackdrop}>
       <div className={css.modal}>
-        <button type="button" className={css.modalCloseBtn} onClick={onClose}>
-          <img
-            className={css.modalCloseIcon}
-            src={modalCloseIcon}
-            alt="close"
-          />
+        <button className={css.CloseBtn} onClick={onClose} type="button">
+          <CloseIcon className={css.CloseBtn__icon} />
         </button>
-        <h2 className={css.modalTitle}>Add transaction</h2>
+        <h2 className={css.modal__title}>Add transaction</h2>
         <Formik
           initialValues={initialValue}
           validationSchema={transactionSchema}
@@ -108,31 +107,33 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
           }}
         >
           {formik => (
+            // {/************************************************/}
             <Form>
               <div className={css.modalWrappenTransaction}>
-                {isToggled ? (
+                {toogle ? (
                   <p className={css.activeTransactionIncome}>Income</p>
                 ) : (
                   <p className={css.modalTransactionIncome}>Income</p>
                 )}
+
                 <label className={css.toggleSwitch}>
                   <Field
                     type="checkbox"
                     name="type"
-                    checked={isToggled}
+                    checked={toogle}
                     onChange={values =>
                       onToggle(formik.setFieldValue, formik.resetForm, values)
                     }
                   />
                   <span className={css.switch} />
                 </label>
-                {isToggled ? (
+                {toogle ? (
                   <p className={css.modalTransactionExpense}>Expense</p>
                 ) : (
                   <p className={css.activeTransactionExpense}>Expense</p>
                 )}
               </div>
-              {!isToggled && (
+              {!toogle && (
                 <div>
                   <Field name="categoryId" validate={validateSelect}>
                     {({ field, form }) => (
@@ -224,7 +225,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
                 className={css.btnAdd}
                 type="submit"
                 onClick={() =>
-                  !isToggled ? formik.validateField('categoryId') : null
+                  !toogle ? formik.validateField('categoryId') : null
                 }
               >
                 Add

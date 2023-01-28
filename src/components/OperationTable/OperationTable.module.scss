@@ -1,15 +1,15 @@
-.tableWrap {
+.table {
   max-width: 715px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
-  .tableWrap {
+  .table {
     margin-top: 20px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .tableWrap {
+  .table {
     margin-top: 42px;
   }
 }
@@ -21,30 +21,48 @@
   margin-bottom: 20px;
 }
 
+@media screen and (min-width: 1280px) {
+  .scrollTableBody {
+    height: 70vh;
+  }
+}
+
 .scrollTableBody tr {
   border-bottom: 1px solid rgb(189, 189, 189);
 }
 
-.scrollTableBody tr > td:first-child {
+.table__date {
   width: 120px;
 }
 
-.scrollTableBody tr > td:nth-child(2) {
+.table__type {
   width: 60px;
 }
 
-.scrollTableBody tr > td:nth-child(4) {
+.table__comment {
+  width: 130px;
+  height: 10px;
   overflow: overlay;
+
+  text-align: left;
+  white-space: nowrap;
+
+  // background-color: red;
 }
 
-.scrollTableBody tr > td:last-child {
+.table__sum {
+  text-align: right;
+}
+
+.table__balance {
+  text-align: right;
+}
+
+.table__btn {
   width: 60px;
-  font-family: var(--primary-font);
-  font-weight: 400;
-  font-size: 16px;
 }
 
-.abraCadabra {
+.table__header {
   font-family: var(--primary-font);
   font-weight: 700;
   font-size: 18px;
@@ -86,102 +104,30 @@
 }
 
 /* Стилі для скрола */
+td::-webkit-scrollbar {
+  width: 4px;
+}
+tr::-webkit-scrollbar {
+  width: 4px;
+}
+
+td::-webkit-scrollbar-thumb {
+  background-color: green;
+}
+
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Мобілка */
-
-.tableWrapMob {
-  max-width: 100%;
-}
-
-.scrollTableBodyMob {
-  height: calc(100vh - 337px);
-  overflow-x: hidden;
-  margin-top: 0px;
-  margin-bottom: 20px;
-}
-
-.scrollTableMob table {
-  width: 100%;
-  table-layout: fixed;
-  text-align: center;
-  border-collapse: collapse;
-  margin-bottom: 10px;
-}
-
-.scrollTableMob table tr {
-  background-color: var(--primary-back-color);
-}
-
-.scrollTableMob table tr td:nth-child(2) {
-  text-align: right;
-  padding: 10px 15px;
-}
-
-.scrollTableMob table tr td:not(:last-child) {
-  padding: 10px 15px;
-  font-size: 16px;
-}
-
-.scrollTableMob table tr :not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.308);
-}
-
-.scrollTableMob table tr > td:first-child {
-  text-align: left;
-  font-weight: 700;
-  z-index: -1;
-  left: 10px;
-}
-
-.scrollTableMob table tr :not(:first-child, :last-child) {
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
-
-.scrollTableMob table tr:first-child > td:first-child {
-  border-top-left-radius: 20px;
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
-
-.scrollTableMob table tr:first-child > td:nth-child(2) {
-  border-top-right-radius: 20px;
-}
-
-.scrollTableMob table tr:last-child > td:first-child {
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
-
-.scrollTableMob table tr:last-child > td:nth-child(2) {
-  border-bottom-right-radius: 20px;
-}
-
-table.tablePositive tr:not(:first-child, :last-child) {
-  box-shadow: inset 4px 0px 0px rgb(36, 204, 167);
-}
-
-table.tablePositive tr:first-child > td:first-child {
-  box-shadow: inset 4px 0px 0px rgb(36, 204, 167);
-}
-
-table.tablePositive tr:last-child > td:first-child {
-  box-shadow: inset 4px 0px 0px rgb(36, 204, 167);
-}
-
-table.tableNegative tr:not(:first-child, :last-child) {
-  box-shadow: inset 4px 0px 0px rgb(255, 102, 150);
-}
 
 td.positive {
   color: rgb(36, 204, 167);
@@ -208,31 +154,4 @@ td.negative {
 .scrollTableBtn:hover,
 .scrollTableBtn:focus {
   opacity: 1;
-}
-
-.scrollTableBtnMob {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 10px 15px;
-  border-radius: 0 0 20px 20px;
-  outline: 1px solid #6e78e8;
-  border: none;
-  margin: 0 auto;
-  color: #fff;
-  background-color: #6e78e8;
-  transform: scaleY(1.2);
-  opacity: 0.9;
-  cursor: pointer;
-  font-family: var(--primary-font);
-  letter-spacing: 0.4em;
-}
-
-.scrollTableBtnMob:hover,
-.scrollTableBtnMob:focus {
-  opacity: 1;
-}
-
-.noTransactionMob {
-  text-align: center;
 }

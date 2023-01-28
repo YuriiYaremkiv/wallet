@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Balance } from 'components/Balance/Balance';
 import { Header } from 'components/Header/Header';
 import { Navigation } from 'components/Navigation/Navigation';
-import Loader from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import { useSelector, useDispatch } from 'react-redux';
 import { Suspense, useEffect } from 'react';
 import { selectIsLoading } from 'redux/transactions/transactionsSelectors';
