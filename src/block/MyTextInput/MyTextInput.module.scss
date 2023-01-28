@@ -36,6 +36,24 @@
   }
 }
 
+.MyTextInput__ShowPassword {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+
+  color: map-get($BgColors, 'secondary');
+
+  transition: color map-get($effect, 'timer') map-get($effect, 'function');
+  transform: translateY(-50%);
+
+  cursor: pointer;
+  z-index: 10000;
+
+  &:hover {
+    color: map-get($BgColors, 'blue');
+  }
+}
+
 .MyTextInput__icon {
   position: absolute;
   left: 8px;
@@ -50,6 +68,7 @@
 .MyTextInput__error {
   color: map-get($textColors, 'error');
 }
+
 .MyTextInput__children {
   position: absolute;
   width: 100%;

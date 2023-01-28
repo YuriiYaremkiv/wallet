@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import { userSchema } from './user_validation';
@@ -15,8 +15,11 @@ import { NavlinkTo } from 'block/NavlinkTo/NavlinkTo';
 
 export const RegisterForm = () => {
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const { error } = useAuth();
+  const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
     if (target.name === 'password') {
@@ -56,18 +59,22 @@ export const RegisterForm = () => {
 
           <MyTextInput
             name="password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             icon={sprite + '#lock'}
+            password={true}
+            changeShowPasswordFunc={setShowPassword}
           >
             <PasswordStrengthMeter password={password} />
           </MyTextInput>
 
           <MyTextInput
             name="confirm_password"
-            type="password"
+            type={showConfirmPassword ? 'text' : 'password'}
             placeholder="Confirm password"
             icon={sprite + '#lock'}
+            password={true}
+            changeShowPasswordFunc={setShowConfirmPassword}
           />
 
           <MyTextInput
