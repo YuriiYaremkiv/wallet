@@ -12,9 +12,9 @@ import sprite from './icons/register-icons.svg';
 export const LoginPage = () => {
   const isLoading = useSelector(selectIsloadingLogin);
   return (
-    <div className={css.RegisterPage}>
+    <div className={css.LoginPage}>
       <div className="container">
-        <div className={css.RegisterPage__img}></div>
+        <div className={css.LoginPage__img}></div>
         <h1 className={css.RegisterPage__title}>Finance App</h1>
         <div className={css.RegisterPage__modal}>
           <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>

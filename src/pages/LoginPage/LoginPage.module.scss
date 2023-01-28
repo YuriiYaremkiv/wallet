@@ -1,6 +1,6 @@
 @import '../../style/vars.scss';
 
-.RegisterPage {
+.LoginPage {
   height: 100vh;
   background-color: map-get($BgColors, 'primary');
 }
@@ -20,7 +20,7 @@
 }
 
 @media screen and (min-width: 480px) {
-  .RegisterPage {
+  .LoginPage {
     background-color: map-get($BgColors, 'secondary');
     background-image: url('../../images/leftElipse.png'),
       url('../../images/rightElipse.png');
@@ -28,19 +28,29 @@
     background-position: left 0 bottom 0, top 0 right 0;
     background-size: 475px, 365px;
   }
+
   .RegisterPage__modal {
     top: 50%;
     transform: translate(50%, -50%);
   }
 }
 
-@media screen and (min-width: 767px) {
-  .RegisterPage {
-    background-image: url('../../images/bkgTab.png'),
+@media screen and (min-width: 767px) and (max-width: 1279px) {
+  .LoginPage {
+    background-image: url('../../images/LoginForm/bgTablet.png'),
       url('../../images/leftElipse.png'), url('../../images/rightElipse.png');
     background-repeat: no-repeat;
     background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
-    background-size: 280px, 490px, 375px;
+    background-size: 260px 250px, 490px, 375px;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .LoginPage {
+      background-image: url('../../images/LoginForm/bgTablet@2x.png'),
+        url('../../images/leftElipse.png'), url('../../images/rightElipse.png');
+    }
   }
 
   .RegisterPage__title {
@@ -64,6 +74,7 @@
 
 @media screen and (min-width: 1280px) {
   .RegisterPage {
+    background-image: none;
     background-image: url('../../images/leftElipse.png'),
       url('../../images/rightElipse.png'),
       linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
@@ -86,18 +97,26 @@
     transform: translateY(-50%);
   }
 
-  .RegisterPage__img {
+  .LoginPage__img {
     position: absolute;
     top: 50%;
     left: 0;
     width: 450px;
     height: 450px;
 
-    background-image: url('../../images/bkgMac.png');
+    background-image: url('../../images/LoginForm/bgDesktop.png');
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 450px, cover;
 
     transform: translateY(-50%);
+  }
+}
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .LoginPage__img {
+    background-image: url('../../images/LoginForm/bgDesktop@2x.png');
   }
 }
