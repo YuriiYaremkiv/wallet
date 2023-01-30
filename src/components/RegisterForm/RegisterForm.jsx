@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-
+import IconButton from '@mui/material/IconButton';
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import { userSchema } from './user_validation';
 import { Formik, Form } from 'formik';
@@ -7,8 +7,12 @@ import { register } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 
+import InputAdornment from '@mui/material/InputAdornment';
 import { MyTextInput } from 'block/MyTextInput/MyTextInput';
 import { Button } from 'block/Button/Button';
+
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import sprite from './icons/register-icons.svg';
 import { NavlinkTo } from 'block/NavlinkTo/NavlinkTo';
@@ -28,67 +32,101 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={{
-        email: '',
-        password: '',
-        confirm_password: '',
-        username: '',
-      }}
-      validationSchema={userSchema}
-      onSubmit={(values, { resetForm }) => {
-        dispatch(
-          register({
-            username: values.username,
-            email: values.email,
-            password: values.password,
-          })
-        );
+    <>
+      fgddfgdf
+      <InputAdornment>
+        <IconButton
+          // aria-label="toggle password visibility"
+          onClick={() => setShowPassword(!showPassword)}
+          // onMouseDown={handleMouseDownPassword}
+          // edge="end"
+        >
+          {showPassword ? <VisibilityOff /> : <Visibility />}
+        </IconButton>
+      </InputAdornment>
+      drgredg
+      <Formik
+        initialValues={{
+          email: '',
+          password: '',
+          confirm_password: '',
+          username: '',
+        }}
+        validationSchema={userSchema}
+        onSubmit={(values, { resetForm }) => {
+          dispatch(
+            register({
+              username: values.username,
+              email: values.email,
+              password: values.password,
+            })
+          );
 
-        resetForm();
-      }}
-    >
-      {formik => (
-        <Form onChange={handleChange}>
-          <MyTextInput
-            name="email"
-            type="email"
-            placeholder="Email"
-            icon={sprite + '#email'}
-          />
+          resetForm();
+        }}
+      >
+        {formik => (
+          <Form onChange={handleChange}>
+            <MyTextInput
+              name="email"
+              type="email"
+              placeholder="Email"
+              icon={sprite + '#email'}
+            />
 
-          <MyTextInput
-            name="password"
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            icon={sprite + '#lock'}
-            password={true}
-            changeShowPasswordFunc={setShowPassword}
-          >
-            <PasswordStrengthMeter password={password} />
-          </MyTextInput>
+            {/* /************************************************************** */}
+            <label htmlFor="lastName">
+              Last Name
+              <IconButton onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+              <input
+                style={{ backgroundColor: 'green' }}
+                id="password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+            </label>
+            {formik.touched.lastName && formik.errors.lastName ? (
+              <div>{formik.errors.lastName}</div>
+            ) : null}
+            {/* **************************************************************** */}
+            <MyTextInput
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              icon={sprite + '#lock'}
+              password={true}
+              changeShowPasswordFunc={setShowPassword}
+            >
+              <PasswordStrengthMeter password={password} />
+            </MyTextInput>
 
-          <MyTextInput
-            name="confirm_password"
-            type={showConfirmPassword ? 'text' : 'password'}
-            placeholder="Confirm password"
-            icon={sprite + '#lock'}
-            password={true}
-            changeShowPasswordFunc={setShowConfirmPassword}
-          />
+            <MyTextInput
+              name="confirm_password"
+              type={showConfirmPassword ? 'text' : 'password'}
+              placeholder="Confirm password"
+              icon={sprite + '#lock'}
+              password={true}
+              changeShowPasswordFunc={setShowConfirmPassword}
+            />
 
-          <MyTextInput
-            name="username"
-            type="text"
-            placeholder="First name"
-            icon={sprite + '#user'}
-          />
-          <Button title="REGISTER" />
+            <MyTextInput
+              name="username"
+              type="text"
+              placeholder="First name"
+              icon={sprite + '#user'}
+            />
+            <Button title="REGISTER" />
 
-          <NavlinkTo title="LOG IN" to="/" />
-          {error && <p>{error}</p>}
-        </Form>
-      )}
-    </Formik>
+            <NavlinkTo title="LOG IN" to="/" />
+            {error && <p>{error}</p>}
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };

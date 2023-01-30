@@ -13,6 +13,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "clsx": "^1.2.1",
     "formik": "^2.2.9",
     "i": "^0.3.7",
     "indicative": "^7.4.4",

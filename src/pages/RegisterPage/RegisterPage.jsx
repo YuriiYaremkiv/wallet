@@ -8,6 +8,7 @@ import { selectIsloadingLogin } from 'redux/auth/authSelectors';
 
 import sprite from './icons/register-icons.svg';
 import { FormContainer } from 'block/FormContainer/FormContainer';
+import { FormRegister } from 'FormRegister/FormRegister';
 
 export const RegisterPage = () => {
   const isLoading = useSelector(selectIsloadingLogin);
@@ -20,6 +21,9 @@ export const RegisterPage = () => {
         <div className={css.RegisterPage__modal}>
           <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
             <RegisterForm />
+          </FormContainer>
+          <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
+            <FormRegister />
           </FormContainer>
         </div>
         <Suspense fallback={<Loader />}></Suspense>
