@@ -10,7 +10,7 @@ import { MyTextInput } from 'block/MyTextInput/MyTextInput';
 import { Button } from 'block/Button/Button';
 import { NavlinkTo } from 'block/NavlinkTo/NavlinkTo';
 
-export const LoginForm = () => {
+export const FormLogin = () => {
   const { error } = useAuth();
   const dispatch = useDispatch();
 

@@ -1,6 +1,6 @@
 import css from './RegisterPage.module.scss';
 
-import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
+import { FormRegister } from '../../components/FormRegister/FormRegister';
 import { Loader } from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { Suspense } from 'react';
@@ -8,7 +8,6 @@ import { selectIsloadingLogin } from 'redux/auth/authSelectors';
 
 import sprite from './icons/register-icons.svg';
 import { FormContainer } from 'block/FormContainer/FormContainer';
-import { FormRegister } from 'FormRegister/FormRegister';
 
 export const RegisterPage = () => {
   const isLoading = useSelector(selectIsloadingLogin);
@@ -19,9 +18,6 @@ export const RegisterPage = () => {
         <div className={css.RegisterPage__img}></div>
         <h1 className={css.RegisterPage__title}>Finance App</h1>
         <div className={css.RegisterPage__modal}>
-          <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
-            <RegisterForm />
-          </FormContainer>
           <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
             <FormRegister />
           </FormContainer>

@@ -1,4 +1,4 @@
-import { LoginForm } from 'components/LoginForm/LoginForm';
+import { FormLogin } from 'components/FormLogin/FormLogin';
 import { Loader } from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { Suspense } from 'react';
@@ -18,7 +18,7 @@ export const LoginPage = () => {
         <h1 className={css.RegisterPage__title}>Finance App</h1>
         <div className={css.RegisterPage__modal}>
           <FormContainer title="Wallet" iconHref={sprite + '#wallet'}>
-            <LoginForm />
+            <FormLogin />
           </FormContainer>
         </div>
         <Suspense fallback={<Loader />}></Suspense>
