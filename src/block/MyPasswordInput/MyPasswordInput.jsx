@@ -1,9 +1,8 @@
 import { useField } from 'formik';
-import css from './MyPasswordInput.module.scss';
-
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
+import css from './MyPasswordInput.module.scss';
 
 export const MyPasswordInput = ({
   label,
@@ -22,12 +21,15 @@ export const MyPasswordInput = ({
   return (
     <>
       <label className={css.label}>
-        <input className={css.input} {...field} {...props} />
+        <input className={css.input} {...field} {...props} maxLength="35" />
         <svg className={css.icon}>
           <use href={icon}></use>
         </svg>
         <div className={css.passwordIcon}>
-          <IconButton onClick={handleShowPassword} className={css.fjksdhfjsdf}>
+          <IconButton
+            onClick={handleShowPassword}
+            className={css.iconContainer}
+          >
             {showPassword ? (
               <VisibilityOff className={css.showIcon} />
             ) : (
@@ -36,9 +38,11 @@ export const MyPasswordInput = ({
           </IconButton>
         </div>
       </label>
-      <div className={css.children}>{children}</div>
       <div className={css.error}>
-        {meta.touched && meta.error && <p>{meta.error}</p>}
+        <div className={css.children}>{children}</div>
+        {meta.touched && meta.error && (
+          <p className={css.message}>{meta.error}</p>
+        )}
       </div>
     </>
   );
