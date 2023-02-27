@@ -1,9 +1,10 @@
-.DashboardPage {
+.section {
   width: 100vw;
   height: 100vh;
   background-color: rgba(231, 234, 242, 0.4);
 
-  background-image: url(./images/blue-back.png), url(./images/pink-back.png);
+  background-image: url(../../images/leftElipse.png),
+    url(../../images/rightElipse.png);
   background-repeat: no-repeat;
   background-position: bottom left, top right;
 
@@ -11,14 +12,14 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .DashboardPage {
+  .section {
     background-position: bottom left, top right -200px;
     height: auto;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .DashboardPage {
+  .section {
     background-image: none;
     height: auto;
     padding-bottom: 20px;

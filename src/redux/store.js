@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { auth } from './auth/authSlice';
 import transactionsSlice from './transactions/transactionsSlice';
 import { translationReducer } from './translation/translationSlice';
+import { themeModeSlice } from './theme/themeModeSlice';
+import { transactionsCurrencySlice } from './currency/currencySlice';
 import {
   persistStore,
   FLUSH,
@@ -20,11 +22,18 @@ const persistConfig = {
   whitelist: ['token'],
 };
 
+const themeModePersistConfig = {
+  key: 'themeMode',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, auth.reducer),
     transactions: transactionsSlice,
     translation: translationReducer,
+    themeMode: persistReducer(themeModePersistConfig, themeModeSlice.reducer),
+    current: transactionsCurrencySlice.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,9 +1,5 @@
 @import '../../style/vars.scss';
 
-.header {
-  background-color: map-get($BgColors, 'primary');
-}
-
 .header__container {
   display: flex;
   align-items: center;
@@ -26,10 +22,8 @@
   display: block;
 
   font-size: 25px;
-  font-family: Poppins;
   line-height: 1;
   font-weight: 700;
-  color: map-get($textColors, 'primary');
 }
 
 .menu {

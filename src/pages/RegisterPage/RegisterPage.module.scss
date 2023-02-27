@@ -1,15 +1,39 @@
-@import '../../style/vars.scss';
-
-.RegisterPage {
+.section__light,
+.section__dark {
   height: 100vh;
-  background-color: map-get($BgColors, 'primary');
 }
 
-.RegisterPage__title {
+.section__light {
+  background-color: var(--bgColorPrimaryLight);
+}
+
+.section__dark {
+  background-color: var(--bgColorPrimaryDark);
+}
+
+.section__container__light,
+.section__container__dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.section__container__light {
+  background-color: var(--bgColorShadowLight);
+}
+
+.section__container__dark {
+  background-color: var(--bgColorShadowDark);
+}
+
+.page__title {
   display: none;
 }
 
-.RegisterPage__modal {
+.page__modal {
   position: absolute;
   left: 50%;
 
@@ -20,30 +44,54 @@
 }
 
 @media screen and (min-width: 480px) {
-  .RegisterPage {
-    background-color: map-get($BgColors, 'secondary');
+  .section__light,
+  .section__dark {
     background-image: url('../../images/leftElipse.png'),
       url('../../images/rightElipse.png');
     background-repeat: no-repeat;
     background-position: left 0 bottom 0, top 0 right 0;
     background-size: 475px, 365px;
   }
-  .RegisterPage__modal {
+
+  .section__light {
+    background-color: var(--bgColorSecondaryLight);
+  }
+
+  .section__dark {
+    background-color: var(--bgColorPrimaryDark);
+  }
+
+  .section__container {
+    display: block;
+  }
+
+  .page__modal {
     top: 50%;
     transform: translate(-50%, -50%);
   }
 }
 
 @media screen and (min-width: 767px) {
-  .RegisterPage {
-    background-image: url('../../images/bkgTab.png'),
+  .section__light,
+  .section__dark {
+    background-image: url('../../images/FormRegister/bgTablet.png'),
       url('../../images/leftElipse.png'), url('../../images/rightElipse.png');
     background-repeat: no-repeat;
-    background-position: calc(50% - 110px) 60px, left 0 bottom 0, top 0 right 0;
+    background-position: calc(50% - 224px) 40px, left 0 bottom 0, top 0 right 0;
     background-size: 280px, 490px, 375px;
   }
 
-  .RegisterPage__title {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .section__light,
+    .section__dark {
+      background-image: url('../../images/FormRegister/bgTablet@2x.png'),
+        url('../../images/leftElipse.png'), url('../../images/rightElipse.png');
+    }
+  }
+
+  .page__title {
     display: block;
     position: absolute;
     top: 190px;
@@ -53,10 +101,9 @@
     font-style: Regular;
     font-size: 30px;
     line-height: 45px;
-    color: map-get($textColors, 'primary');
   }
 
-  .RegisterPage__modal {
+  .page__modal {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -30%);
@@ -64,7 +111,8 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .RegisterPage {
+  .section__light,
+  .section__dark {
     background-image: url('../../images/leftElipse.png'),
       url('../../images/rightElipse.png'),
       linear-gradient(90deg, #e7eaf2 40%, #f1f3f8 0);
@@ -73,32 +121,57 @@
     background-size: 450px, 575px, cover;
   }
 
-  .RegisterPage__title {
+  .section__light {
+    background-image: url('../../images/leftElipse.png'),
+      url('../../images/rightElipse.png'),
+      linear-gradient(90deg, #e7eaf2 45%, #f1f3f8 0);
+  }
+
+  .section__dark {
+    background-image: url('../../images/leftElipse.png'),
+      url('../../images/rightElipse.png'),
+      linear-gradient(
+        90deg,
+        var(--bgColorPrimaryDark) 45%,
+        var(--bgColorSecondaryDark) 0
+      );
+  }
+
+  .page__title {
     top: 50%;
     left: 60px;
 
     transform: translateY(250px);
   }
 
-  .RegisterPage__modal {
+  .page__modal {
     top: 50%;
     right: 90px;
     transform: translateX(0);
     transform: translateY(-50%);
   }
 
-  .RegisterPage__img {
+  .page__img {
     position: absolute;
     top: 50%;
     left: 0;
-    width: 450px;
-    height: 450px;
+    width: 475px;
+    height: 475px;
 
-    background-image: url('../../images/bkgMac.png');
+    background-image: url('../../images/FormRegister/bgDesktop.png');
     background-repeat: no-repeat;
     background-position: left center;
-    background-size: 450px, cover;
+    background-size: 475px, cover;
 
     transform: translateY(-50%);
+    z-index: -10;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .LoginPage__img {
+      background-image: url('../../images/FormRegister/bgDesktop@2x.png');
+    }
   }
 }

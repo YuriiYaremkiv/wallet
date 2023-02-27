@@ -17,7 +17,6 @@ import { refreshUser } from 'redux/auth/authOperations';
 import FormikDateTime from './FormicDatetime';
 
 import css from './ModalAddTransaction.module.scss';
-import sprite from './icons/icons.svg';
 
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -37,7 +36,6 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
   };
   const onToggle = (setFieldValue, resetForm, values) => {
     setToogle(!toogle);
-    console.log(values.target.checked);
     if (values.target.checked) {
       setType(type);
     } else {

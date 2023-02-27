@@ -1,7 +1,7 @@
 import { StyledLink } from './Navigation.styled';
 import Media from 'react-media';
 
-import css from './Navigation.module.css';
+import css from './Navigation.module.scss';
 import sprite from '../../images/icons/icons.svg';
 
 export const Navigation = () => {

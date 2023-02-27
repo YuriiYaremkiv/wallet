@@ -1,6 +1,11 @@
+import sprite from './icons/register-icons.svg';
 import css from './FormContainer.module.scss';
 
-export const FormContainer = ({ title, iconHref, children }) => {
+export const FormContainer = ({
+  title = 'Wallet',
+  iconHref = `${sprite + '#wallet'}`,
+  children,
+}) => {
   return (
     <div className={css.FormContainer}>
       <div className={css.FormContainer__container}>

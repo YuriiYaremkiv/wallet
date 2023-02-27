@@ -31,6 +31,16 @@ $effect: (
 );
 
 :root {
+  --bgColorPrimaryLight: #fff;
+  --bgColorSecondaryLight: #e0e0e0;
+  --bgColorShadowLight: 'transparent';
+  --bgColorBlue: rgba(74, 86, 226, 1);
+  --bgColorGreen: rgba(36, 204, 167, 1);
+
+  --bgColorPrimaryDark: #212121;
+  --bgColorSecondaryDark: #424242;
+  --bgColorShadowDark: rgba(0, 0, 0, 0.4);
+
   /* text colors */
   --primary-text-color: rgba(0, 0, 0, 1);
   --secondary-text-color: rgba(255, 255, 255, 1);

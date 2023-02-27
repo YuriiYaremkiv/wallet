@@ -3,8 +3,8 @@
 
 .FormContainer {
   width: 100%;
-  max-width: 550px;
-  padding: 40px 60px 65px;
+  max-width: 475px;
+  padding: 30px 50px 30px;
 
   background-color: map-get($BgColors, 'primary');
 
@@ -13,7 +13,7 @@
 
 .FormContainer__container {
   @include flex-center;
-  margin-bottom: 50px;
+  margin-bottom: 12px;
 }
 .registrationPage__icon {
   width: 32px;

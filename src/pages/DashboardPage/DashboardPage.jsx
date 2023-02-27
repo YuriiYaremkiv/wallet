@@ -10,12 +10,17 @@ import { Currency } from 'components/Currency/Currency';
 import Media from 'react-media';
 import { fetchTransactions } from 'redux/transactions/transactionsOperations';
 import { fetchTransactionCategories } from 'redux/transactions/transactionsOperations';
+import { getCurrencyRate } from 'redux/currency/currencyOperations';
 
 import css from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrencyRate());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -26,7 +31,7 @@ const DashboardPage = () => {
   }, [dispatch]);
 
   return (
-    <section className={css.DashboardPage}>
+    <section className={css.section}>
       <div className={css.dashboard__wrapper}>
         <Header />
         <div className="container">
