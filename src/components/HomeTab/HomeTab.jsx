@@ -32,7 +32,7 @@ const HomeTab = () => {
           <OperationTable transactions={transactions} onDelete={onDelete} />
         )}
       />
-      <ButtonAddTransactions />
+      {/* <ButtonAddTransactions /> */}
     </>
   );
 };

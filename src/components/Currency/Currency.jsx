@@ -1,83 +1,55 @@
-import styles from './Currency.module.scss';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Circles } from 'react-loader-spinner';
-import translation from 'assets/translation/currency.json';
-import { translationSelector } from 'redux/translation/translationSelectors';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { Circles } from 'react-loader-spinner';
+import css from './Currency.module.scss';
 
 export const Currency = () => {
-  const language = useSelector(translationSelector);
-
   const currency = useSelector(state => state.current.items);
-  console.log(currency);
-
-  // useEffect(() => {
-  //   const date = new Date();
-  //   const currentHour = date.getHours();
-  //   const currentMinute = date.getMinutes();
-  //   const currentTime = `${currentHour}-${currentMinute}`;
-  //   async function getCurrency() {
-  //     try {
-  //       const response = await axios.get(
-  //         'https://api.monobank.ua/bank/currency'
-  //       );
-  //       const Currency = [response.data[0], response.data[1]];
-  //       setCurrency(Currency);
-  //       localStorage.setItem('time', `${currentHour + 1}-${currentMinute}`);
-  //       localStorage.setItem('currency', JSON.stringify(Currency));
-  //     } catch (e) {
-  //       console.log(e);
-  //       if (currency.length === 0) {
-  //         setCurrency(JSON.parse(localStorage.getItem('currency')));
-  //       }
-  //     }
-  //   }
-
-  //   const localStorageTime = localStorage.getItem('time');
-  //   if (localStorageTime) {
-  //     if (localStorageTime > currentTime) {
-  //       setCurrency(JSON.parse(localStorage.getItem('currency')));
-  //       return;
-  //     } else if (localStorageTime <= currentTime) {
-  //       getCurrency();
-  //     }
-  //   } else {
-  //     getCurrency();
-  //   }
-  // }, [currency.length]);
+  const { t } = useTranslation();
 
   return currency.length ? (
-    <div className={styles.currency__wrapper}>
-      <table className={styles.table}>
-        <tbody>
-          <tr className={styles.tableHead}>
-            <td className={styles.currency}>
-              {translation[language].currency}
-            </td>
-            <td className={styles.purchase}>
-              {translation[language].purchase}
-            </td>
-            <td className={styles.sale}>{translation[language].sale}</td>
-          </tr>
-        </tbody>
-        <tbody className={styles.tableBody}>
-          <tr className={styles.tableValues}>
-            <td>USD</td>
-            <td>{currency[0].rateBuy.toFixed(2)}</td>
-            <td>{currency[0].rateSell.toFixed(2)}</td>
-          </tr>
-
-          <tr className={styles.tableValues}>
-            <td>EUR</td>
-            <td>{currency[1].rateSell.toFixed(2)}</td>
-            <td>{currency[1].rateBuy.toFixed(2)}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className={css.container}>
+      <ul className={css.list}>
+        <div className={css.wrapper}></div>
+        <li>
+          <ul className={css.list__item}>
+            <li className={css.list__value}>{t('currency')}</li>
+            <li className={css.list__value}>USD</li>
+            <li className={css.list__value}>EUR</li>
+          </ul>
+        </li>
+        <li>
+          <ul className={css.list__item}>
+            <li className={css.list__value}>{t('purchase')}</li>
+            <li className={css.list__value}>
+              {currency[0].rateBuy.toFixed(2)}
+            </li>
+            <li className={css.list__value}>
+              {currency[1].rateBuy.toFixed(2)}
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul className={css.list__item}>
+            <li className={css.list__value}>{t('sale')}</li>
+            <li className={css.list__value}>
+              {currency[0].rateSell.toFixed(2)}
+            </li>
+            <li className={css.list__value}>
+              {currency[1].rateSell.toFixed(2)}
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   ) : (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <Circles
         height="30"
         width="30"
@@ -90,4 +62,3 @@ export const Currency = () => {
     </div>
   );
 };
-export default Currency;

@@ -18,57 +18,57 @@ const state = {
 export const auth = createSlice({
   name: 'auth',
   initialState: state,
-  extraReducers: {
-    [register.pending](state) {
+  extraReducers: builder => {
+    builder.addCase(register.pending, state => {
       state.isLoading = true;
       state.error = null;
-    },
-    [register.fulfilled](state, action) {
+    });
+    builder.addCase(register.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
       state.isLoading = false;
-    },
-    [logIn.pending](state) {
+    });
+    builder.addCase(logIn.pending, state => {
       state.isLoading = true;
       state.error = null;
-    },
-    [logIn.fulfilled](state, action) {
+    });
+    builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
       state.isLoading = false;
-    },
-    [logIn.rejected]: handleRejected,
-    [logOut.fulfilled](state) {
+    });
+    builder.addCase(logIn.rejected, handleRejected);
+    builder.addCase(logOut.fulfilled, state => {
       state.user = { name: null, email: null, password: null };
       state.isLoggedIn = false;
       state.token = null;
-    },
-    [refreshUser.pending](state) {
+    });
+    builder.addCase(refreshUser.pending, state => {
       state.isRefreshing = true;
       state.isLoading = true;
-    },
-    [refreshUser.fulfilled](state, action) {
+    });
+    builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
       state.error = null;
       state.isLoading = false;
-    },
-    [refreshUser.rejected](state) {
+    });
+    builder.addCase(refreshUser.rejected, state => {
       state.isRefreshing = false;
       state.error = null;
       state.isLoading = false;
-    },
+    });
   },
   reducers: {
     changeBalance(state, action) {
-      state.user.balance = state.user.balance-action.payload;
+      state.user.balance = state.user.balance - action.payload;
     },
   },
 });
 
-export const {changeBalance} = auth.actions
+export const { changeBalance } = auth.actions;

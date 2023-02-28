@@ -28,83 +28,93 @@ const initialState = {
 const transactionsSlice = createSlice({
   name: 'userTransactions',
   initialState,
-
-  extraReducers: {
-    [fetchTransactions.pending]: state => {
+  extraReducers: builder => {
+    builder.addCase(fetchTransactions.pending, state => {
       state.isLoading = true;
       state.error = null;
-    },
-    [fetchTransactions.fulfilled]: (state, { payload }) => {
+    });
+    builder.addCase(fetchTransactions.fulfilled, (state, { payload }) => {
       state.items = payload;
       state.isLoading = false;
       state.error = null;
-    },
-    [fetchTransactions.rejected]: (state, { payload }) => {
+    });
+    builder.addCase(fetchTransactions.rejected, (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
-    },
-    [addTransaction.pending]: state => {
+    });
+    builder.addCase(addTransaction.pending, state => {
       state.isLoading = true;
-    },
-    [addTransaction.fulfilled]: (state, { payload }) => {
+    });
+    builder.addCase(addTransaction.fulfilled, (state, { payload }) => {
       state.items = [...state.items, payload];
       state.isLoading = false;
       state.error = null;
-    },
-    [addTransaction.rejected]: (state, { payload }) => {
+    });
+    builder.addCase(addTransaction.rejected, (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
-    },
-    [deleteTransaction.pending]: state => {
+    });
+    builder.addCase(deleteTransaction.pending, state => {
       state.isLoading = true;
-    },
-    [deleteTransaction.fulfilled]: (state, { payload }) => {
+    });
+    builder.addCase(deleteTransaction.fulfilled, (state, { payload }) => {
       state.items = state.items.filter(({ id }) => id !== payload);
       state.isLoading = false;
-    },
-    [deleteTransaction.rejected]: (state, { payload }) => {
+    });
+    builder.addCase(deleteTransaction.rejected, (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
-    },
-    [fetchTransactionCategories.pending]: state => {
+    });
+    builder.addCase(fetchTransactionCategories.pending, state => {
       state.isLoading = true;
       state.error = null;
-    },
-    [fetchTransactionCategories.fulfilled]: (state, { payload }) => {
-      state.transactionCategories.items = payload;
-      state.isLoading = false;
-      state.error = null;
-    },
-    [fetchTransactionCategories.rejected]: (state, { payload }) => {
-      state.error = payload;
-      state.isLoading = false;
-    },
-
-    [fetchTransactionsSummary.pending](state) {
+    });
+    builder.addCase(
+      fetchTransactionCategories.fulfilled,
+      (state, { payload }) => {
+        state.transactionCategories.items = payload;
+        state.isLoading = false;
+        state.error = null;
+      }
+    );
+    builder.addCase(
+      fetchTransactionCategories.rejected,
+      (state, { payload }) => {
+        state.error = payload;
+        state.isLoading = false;
+      }
+    );
+    builder.addCase(fetchTransactionsSummary.pending, state => {
       state.isLoading = true;
-    },
-    [fetchTransactionsSummary.fulfilled](state, action) {
+    });
+    builder.addCase(fetchTransactionsSummary.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
       state.summaryItems = action.payload;
-    },
-    [fetchTransactionsSummary.rejected](state, action) {
+    });
+    builder.addCase(fetchTransactionsSummary.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
-    },
+    });
 
-    [fetchTransactionsSummaryOfPeriod.pending](state) {
+    builder.addCase(fetchTransactionsSummaryOfPeriod.pending, state => {
       state.isLoading = true;
-    },
-    [fetchTransactionsSummaryOfPeriod.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.summaryItems = action.payload;
-    },
-    [fetchTransactionsSummaryOfPeriod.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+    });
+    builder.addCase(
+      fetchTransactionsSummaryOfPeriod.fulfilled,
+      (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.summaryItems = action.payload;
+      }
+    );
+    builder.addCase(
+      fetchTransactionsSummaryOfPeriod.rejected,
+      (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      }
+    );
   },
 });
 

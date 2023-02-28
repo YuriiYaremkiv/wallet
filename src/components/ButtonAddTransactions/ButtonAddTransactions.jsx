@@ -1,4 +1,4 @@
-import css from './ButtonAddTransactions.module.css';
+import css from './ButtonAddTransactions.module.scss';
 import btnAddTransactions from '../ButtonAddTransactions/image/btnAddTransactions.svg';
 import { useState, useEffect } from 'react';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
@@ -17,12 +17,10 @@ const ButtonAddTransactions = () => {
 
   const handleOpenModal = () => {
     setIsModalAddTransactionOpen(true);
-
   };
 
   const handleClickClose = () => {
     setIsModalAddTransactionOpen(false);
-
   };
 
   const handleBackdrop = e => {

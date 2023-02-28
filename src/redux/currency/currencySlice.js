@@ -8,18 +8,22 @@ export const transactionsCurrencySlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: {
-    [getCurrencyRate.pending]: state => {
+  extraReducers: builder => {
+    builder.addCase(getCurrencyRate.pending, state => {
       state.isLoading = true;
       state.error = null;
-    },
-    [getCurrencyRate.fulfilled]: (state, action) => {
+    });
+    builder.addCase(getCurrencyRate.fulfilled, (state, action) => {
       state.isLoading = false;
       state.items = action.payload;
-    },
-    [getCurrencyRate.rejected]: (state, action) => {
+    });
+    builder.addCase(getCurrencyRate.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload;
-    },
+      if (action.payload.length === 0) {
+        state.error = 'error';
+        return;
+      }
+      state.items = action.payload;
+    });
   },
 });

@@ -1,29 +1,45 @@
 import { useSelector } from 'react-redux';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { selectTransactionCategories } from 'redux/transactions/transactionsSelectors';
-
-import css from './OperationTable.module.scss';
-
 import { CommentHover } from 'block/CommentHover/CommentHover';
+import { useTranslation } from 'react-i18next';
+import modeConfig from 'configs/mode.config';
+import css from './OperationTable.module.scss';
 
 export const OperationTable = ({ transactions, onDelete }) => {
   const categories = useSelector(selectTransactionCategories);
   const categoriesList = categories.map(data => data);
   const transactionsReverse = [...transactions];
+  const { themeMode } = useSelector(state => state.themeMode);
+  const styles = modeConfig.style[themeMode];
+  const { t } = useTranslation();
 
   return (
-    <div className={css.table}>
+    <div
+      className={css.table}
+      style={{
+        ...styles.backgroundColorThree,
+        borderTopLeftRadius: '30px',
+        borderTopRightRadius: '30px',
+      }}
+    >
       <div className={css.scrollTable}>
         <table>
-          <thead className={css.table__header}>
+          <thead className={css.table__header} style={{ ...styles.textColor }}>
             <tr>
-              <th>Date</th>
-              <th>Type </th>
-              <th>Category</th>
-              <th>Comment</th>
-              <th>Sum</th>
-              <th>Balance</th>
-              <th></th>
+              <th style={{ ...styles.backgroundColorAccent }}>{t('date')}</th>
+              <th style={{ ...styles.backgroundColorAccent }}>{t('type')}</th>
+              <th style={{ ...styles.backgroundColorAccent }}>
+                {t('category')}
+              </th>
+              <th style={{ ...styles.backgroundColorAccent }}>
+                {t('comment')}
+              </th>
+              <th style={{ ...styles.backgroundColorAccent }}>{t('sum')}</th>
+              <th style={{ ...styles.backgroundColorAccent }}>
+                {t('balance')}
+              </th>
+              <th style={{ ...styles.backgroundColorAccent }}></th>
             </tr>
           </thead>
         </table>
@@ -83,7 +99,7 @@ export const OperationTable = ({ transactions, onDelete }) => {
                   )
               ) : (
                 <tr>
-                  <td>No transactions!</td>
+                  <td>{t('noTransactions')}</td>
                 </tr>
               )}
             </tbody>

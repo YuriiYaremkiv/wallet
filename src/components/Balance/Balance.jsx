@@ -1,9 +1,12 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import css from './Balance.module.scss';
 
 export const Balance = () => {
   const userBalance = useSelector(state => state.auth.user.balance);
+  const { t } = useTranslation();
+
   const balance = userBalance
     .toFixed(2)
     .toString()
@@ -11,10 +14,8 @@ export const Balance = () => {
 
   return (
     <div className={css.balance}>
-      <span className={css.balance__title}>YOUR BALANCE</span>
-      <p className={css.balance__sum}>
-        <span>{balance} $</span>
-      </p>
+      <p className={css.balance__title}>{t('yourBalance')}</p>
+      <p className={css.balance__sum}>{balance} $</p>
     </div>
   );
 };

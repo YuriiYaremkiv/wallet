@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { nanoid } from '@reduxjs/toolkit';
-import styles from './DiagramTab.module.css';
+import css from './DiagramTab.module.scss';
 import {
   fetchTransactionsSummaryOfPeriod,
   fetchTransactionsSummary,
@@ -11,8 +11,8 @@ import { useSelector } from 'react-redux';
 import { selectStatistic } from 'redux/transactions/transactionsSelectors';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import translation from 'assets/translation/diagram_tab.json';
-import { translationSelector } from 'redux/translation/translationSelectors';
+import { useTranslation } from 'react-i18next';
+import modeConfig from 'configs/mode.config';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -32,16 +32,16 @@ const monthNumber = [
 ];
 
 const DiagramTab = () => {
-  const language = useSelector(translationSelector);
   const today = new Date();
   const month = today.getMonth();
   const year = today.getFullYear();
-  // const [month, setMonth] = useState(today.getMonth());
-  // const [year, SetYear] = useState(today.getFullYear());
   const dispatch = useDispatch();
   const dataBASE = useSelector(selectStatistic);
 
   const [params, setParams] = useSearchParams();
+  const { themeMode } = useSelector(state => state.themeMode);
+  const styles = modeConfig.style[themeMode];
+  const { t } = useTranslation();
 
   let DiagramaItem = null;
   let ExpenseSum = null;
@@ -128,7 +128,7 @@ const DiagramTab = () => {
   }, [params]);
   // useEffect(() => {
   //   dispatch(fetchTransactionsSummaryOfPeriod({ month, year }));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [month, year]);
 
   const onChanged = el => {
@@ -137,12 +137,9 @@ const DiagramTab = () => {
         const mons = monthNumber.findIndex(
           elment => elment.toLowerCase() === el.target.value
         );
-        console.log(mons, el.target.value);
-        // setMonth(el.target.value);
         setParams({ month: mons + 1, year });
         break;
       case 'year':
-        // SetYear(el.target.value);
         setParams({ month, year: el.target.value });
         break;
       default:
@@ -151,48 +148,53 @@ const DiagramTab = () => {
   };
 
   return (
-    <div className={styles.statisticChart}>
-      <div className={styles.diagram}>
-        <h1 className={styles.diagramTitle}>
-          {translation[language].statistics}
-        </h1>
-        {visible ? (
-          <>
-            <Doughnut data={data} />
-            <p className={styles.incomeSum}>
-              <span>&#8372;</span>
-              {dataBASE.periodTotal}
-            </p>
-          </>
-        ) : (
-          <p>Nothing</p>
-        )}
-      </div>
+    <div className={css.chart}>
+      <h1 style={{ ...styles.textColor }} className={css.chart__title}>
+        {t('statistics')}
+      </h1>
+      {/* Diagram - start */}
+      {visible ? (
+        <div className={css.schedule}>
+          <Doughnut data={data} />
+          <p style={{ ...styles.textColor }} className={css.schedule__income}>
+            &#8372;{' '}
+            {dataBASE.periodTotal
+              ?.toFixed(2)
+              .toString()
+              .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
+          </p>
+        </div>
+      ) : (
+        <p style={{ ...styles.textColor }}>{t('nothing')}</p>
+      )}
+      {/* Diagram - start */}
 
-      <div className={styles.chartItem}>
-        <div className={styles.select}>
+      {/* select - start */}
+
+      <div className={css.chartItem}>
+        <div className={css.select}>
           <select
-            className={styles.selectItem}
+            className={css.selectItem}
             name="month"
             id="month"
             defaultValue={month}
             onChange={onChanged}
           >
-            <option value="january"> {translation[language].months[0]}</option>
-            <option value="february"> {translation[language].months[1]}</option>
-            <option value="march"> {translation[language].months[2]}</option>
-            <option value="april"> {translation[language].months[3]}</option>
-            <option value="april"> {translation[language].months[4]}</option>
-            <option value="april">{translation[language].months[5]}</option>
-            <option value="july"> {translation[language].months[6]}</option>
-            <option value="august"> {translation[language].months[7]}</option>
-            <option value="september">{translation[language].months[8]}</option>
-            <option value="november"> {translation[language].months[9]}</option>
-            <option value="october">{translation[language].months[10]}</option>
-            <option value="december">{translation[language].months[11]}</option>
+            <option value="january"> {t('january')}</option>
+            <option value="february">{t('february')}</option>
+            <option value="march">{t('march')}</option>
+            <option value="april">{t('april')}</option>
+            <option value="may">{t('may')}</option>
+            <option value="june">{t('june')}</option>
+            <option value="july"> {t('july')}</option>
+            <option value="august"> {t('august')}</option>
+            <option value="september">{t('september')}</option>
+            <option value="october"> {t('october')}</option>
+            <option value="november">{t('november')}</option>
+            <option value="december">{t('december')}</option>
           </select>
           <select
-            className={styles.selectItem}
+            className={css.selectItem}
             name="year"
             id="year"
             defaultValue={year}
@@ -211,20 +213,23 @@ const DiagramTab = () => {
             <option value="2029">2029</option>
           </select>
         </div>
+        {/* select - eng */}
 
-        <div className={styles.chart}>
-          <div className={styles.title}>
-            <div className={styles.titleItem}>
-              <p>{translation[language].category}</p>
-              <p>{translation[language].sum}</p>
+        {/* dsfsdlfsdfds */}
+        <div className={css.chart}>
+          <div className={css.title}>
+            <div className={css.titleItem}>
+              <p>{t('category')}</p>
+              <p>{t('sum')}</p>
             </div>
           </div>
-          <di></di>
+          {/* dsfsdlfsdfds */}
+          {/* sdfjlsdlfjs;dflksdjflkdsjfk */}
           {visible ? (
-            <ul className={styles.list}>
+            <ul className={css.list}>
               {DiagramaItem.map(({ name, total }, index) => (
-                <li key={nanoid()} className={styles.listItem}>
-                  <div className={styles.expenseItem}>
+                <li key={nanoid()} className={css.listItem}>
+                  <div className={css.expenseItem}>
                     <p
                       style={{
                         width: 24,
@@ -232,33 +237,52 @@ const DiagramTab = () => {
                         backgroundColor: [data.color[index]],
                       }}
                     ></p>
-                    <div className={styles.expenseItemText}>
-                      <span className={styles.nameExpense}>{name}</span>
-                      <span>{Math.abs(total)}</span>
+                    <div className={css.expenseItemText}>
+                      <span
+                        style={{ ...styles.textColor }}
+                        className={css.nameExpense}
+                      >
+                        {name}
+                      </span>
+                      <span style={{ ...styles.textColor }}>
+                        {total
+                          ?.toFixed(2)
+                          .toString()
+                          .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
+                      </span>
                     </div>
                   </div>
-                  <div className={styles.separator}></div>
+                  <div className={css.separator}></div>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className={styles.ListEmpty}>{translation[language].list}</p>
+            <p className={css.ListEmpty}>{t('list')}</p>
           )}
-
-          <div className={styles.totalList}>
-            <p className={styles.totalListItem}>
-              <span className={styles.result}>
-                {translation[language].expenses}
+          {/* dsfhsdkfskdjfksdfhksdjfhksjdfhjsd */}
+          <div className={css.totalList}>
+            <p className={css.totalListItem}>
+              <span style={{ ...styles.textColor }} className={css.result}>
+                {t('expenses')}
               </span>
-              <span className={styles.exp}>
-                {Math.abs(dataBASE.expenseSummary)}
+              <span className={css.exp}>
+                {dataBASE.expenseSummary
+                  ?.toFixed(2)
+                  .toString()
+                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
               </span>
             </p>
-            <p className={styles.totalListItem}>
-              <span className={styles.result}>
-                {translation[language].income}
+            <p className={css.totalListItem}>
+              <span style={{ ...styles.textColor }} className={css.result}>
+                {t('income')}
               </span>
-              <span className={styles.income}> {dataBASE.incomeSummary}</span>
+              <span className={css.income}>
+                {' '}
+                {dataBASE.incomeSummary
+                  ?.toFixed(2)
+                  .toString()
+                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
+              </span>
             </p>
           </div>
         </div>
@@ -268,3 +292,261 @@ const DiagramTab = () => {
 };
 
 export default DiagramTab;
+
+// const DiagramTab = () => {
+//   const today = new Date();
+//   const month = today.getMonth();
+//   const year = today.getFullYear();
+//   // const [month, setMonth] = useState(today.getMonth());
+//   // const [year, SetYear] = useState(today.getFullYear());
+//   const dispatch = useDispatch();
+//   const dataBASE = useSelector(selectStatistic);
+
+//   const [params, setParams] = useSearchParams();
+//   const { themeMode } = useSelector(state => state.themeMode);
+//   const styles = modeConfig.style[themeMode];
+//   const { t } = useTranslation();
+
+//   let DiagramaItem = null;
+//   let ExpenseSum = null;
+//   let TitleExpense = null;
+//   let visible = false;
+//   let data = null;
+
+//   if (dataBASE.categoriesSummary) {
+//     if (dataBASE.categoriesSummary.length !== 0) {
+//       visible = true;
+//     }
+
+//     DiagramaItem = dataBASE.categoriesSummary.filter(({ type }) =>
+//       type.includes('EXPENSE')
+//     );
+
+//     ExpenseSum = dataBASE.categoriesSummary
+//       .filter(({ type }) => type.includes('EXPENSE'))
+//       .map(({ total }) => Math.abs(total));
+
+//     TitleExpense = dataBASE.categoriesSummary
+//       .filter(({ type }) => type.includes('EXPENSE'))
+//       .map(({ name }) => name);
+
+//     data = {
+//       labels: [...TitleExpense],
+//       color: [
+//         '#FED057',
+//         '#FFD8D0',
+//         '#FD9498',
+//         '#C5BAFF',
+//         '#6E78E8',
+//         '#4A56E2',
+//         '#81E1FF',
+//         '#24CCA7',
+//         '#00AD84',
+//       ],
+//       datasets: [
+//         {
+//           label: '# of Votes',
+//           data: [...ExpenseSum],
+//           backgroundColor: [
+//             '#FED057',
+//             '#FFD8D0',
+//             '#FD9498',
+//             '#C5BAFF',
+//             '#6E78E8',
+//             '#4A56E2',
+//             '#81E1FF',
+//             '#24CCA7',
+//             '#00AD84',
+//           ],
+//           borderColor: [
+//             '#FED057',
+//             '#FFD8D0',
+//             '#FD9498',
+//             '#C5BAFF',
+//             '#6E78E8',
+//             '#4A56E2',
+//             '#81E1FF',
+//             '#24CCA7',
+//             '#00AD84',
+//           ],
+//           borderWidth: 1,
+//         },
+//       ],
+//     };
+//   }
+
+//   useEffect(() => {
+//     dispatch(fetchTransactionsSummary());
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
+
+//   useEffect(() => {
+//     const month = params.get('month');
+//     const year = params.get('year');
+
+//     if (!month || !year) {
+//       return;
+//     }
+//     dispatch(fetchTransactionsSummaryOfPeriod({ month, year }));
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [params]);
+//   // useEffect(() => {
+//   //   dispatch(fetchTransactionsSummaryOfPeriod({ month, year }));
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
+//   // }, [month, year]);
+
+//   const onChanged = el => {
+//     switch (el.target.id) {
+//       case 'month':
+//         const mons = monthNumber.findIndex(
+//           elment => elment.toLowerCase() === el.target.value
+//         );
+//         setParams({ month: mons + 1, year });
+//         break;
+//       case 'year':
+//         setParams({ month, year: el.target.value });
+//         break;
+//       default:
+//         break;
+//     }
+//   };
+
+//   return (
+//     <div className={css.statisticChart}>
+//       <h1 style={{ ...styles.textColor }} className={css.diagramTitle}>
+//         {t('statistics')}
+//       </h1>
+//       {/* Diagram - start */}
+//       {visible ? (
+//         <>
+//           <div className={css.schedule}>
+//             <Doughnut data={data} />
+//           </div>
+//           <p style={{ ...styles.textColor }} className={css.incomeSum}>
+//             <span>
+//               &#8372;
+//               {dataBASE.periodTotal
+//                 ?.toFixed(2)
+//                 .toString()
+//                 .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
+//             </span>
+//           </p>
+//         </>
+//       ) : (
+//         <p>{t('nothing')}</p>
+//       )}
+//       {/* Diagram - start */}
+
+//       <div className={css.chartItem}>
+//         <div className={css.select}>
+//           <select
+//             className={css.selectItem}
+//             name="month"
+//             id="month"
+//             defaultValue={month}
+//             onChange={onChanged}
+//           >
+//             <option value="january"> {t('january')}</option>
+//             <option value="february">{t('february')}</option>
+//             <option value="march">{t('march')}</option>
+//             <option value="april">{t('april')}</option>
+//             <option value="may">{t('may')}</option>
+//             <option value="june">{t('june')}</option>
+//             <option value="july"> {t('july')}</option>
+//             <option value="august"> {t('august')}</option>
+//             <option value="september">{t('september')}</option>
+//             <option value="october"> {t('october')}</option>
+//             <option value="november">{t('november')}</option>
+//             <option value="december">{t('december')}</option>
+//           </select>
+//           <select
+//             className={css.selectItem}
+//             name="year"
+//             id="year"
+//             defaultValue={year}
+//             onChange={onChanged}
+//           >
+//             <option value="2019">2019</option>
+//             <option value="2020">2020</option>
+//             <option value="2021">2021</option>
+//             <option value="2022">2022</option>
+//             <option value="2023">2023</option>
+//             <option value="2024">2024</option>
+//             <option value="2025">2025</option>
+//             <option value="2026">2026</option>
+//             <option value="2027">2027</option>
+//             <option value="2028">2028</option>
+//             <option value="2029">2029</option>
+//           </select>
+//         </div>
+//         <div className={css.chart}>
+//           <div className={css.title}>
+//             <div className={css.titleItem}>
+//               <p>{t('category')}</p>
+//               <p>{t('sum')}</p>
+//             </div>
+//           </div>
+//           {visible ? (
+//             <ul className={css.list}>
+//               {DiagramaItem.map(({ name, total }, index) => (
+//                 <li key={nanoid()} className={css.listItem}>
+//                   <div className={css.expenseItem}>
+//                     <p
+//                       style={{
+//                         width: 24,
+//                         height: 24,
+//                         backgroundColor: [data.color[index]],
+//                       }}
+//                     ></p>
+//                     <div className={css.expenseItemText}>
+//                       <span
+//                         style={{ ...styles.textColor }}
+//                         className={css.nameExpense}
+//                       >
+//                         {name}
+//                       </span>
+//                       <span style={{ ...styles.textColor }}>
+//                         {total
+//                           ?.toFixed(2)
+//                           .toString()
+//                           .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
+//                       </span>
+//                     </div>
+//                   </div>
+//                   <div className={css.separator}></div>
+//                 </li>
+//               ))}
+//             </ul>
+//           ) : (
+//             <p className={css.ListEmpty}>{t('list')}</p>
+//           )}
+//           <div className={css.totalList}>
+//             <p className={css.totalListItem}>
+//               <span style={{ ...styles.textColor }} className={css.result}>
+//                 {t('expenses')}
+//               </span>
+//               <span className={css.exp}>
+//                 {dataBASE.expenseSummary
+//                   ?.toFixed(2)
+//                   .toString()
+//                   .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
+//               </span>
+//             </p>
+//             <p className={css.totalListItem}>
+//               <span style={{ ...styles.textColor }} className={css.result}>
+//                 {t('income')}
+//               </span>
+//               <span className={css.income}>
+//                 {' '}
+//                 {dataBASE.incomeSummary
+//                   ?.toFixed(2)
+//                   .toString()
+//                   .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}
+//               </span>
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };

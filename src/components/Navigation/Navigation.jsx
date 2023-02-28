@@ -1,34 +1,43 @@
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { StyledLink } from './Navigation.styled';
 import Media from 'react-media';
-
-import css from './Navigation.module.scss';
 import sprite from '../../images/icons/icons.svg';
+import modeConfig from 'configs/mode.config';
+import css from './Navigation.module.scss';
 
 export const Navigation = () => {
+  const { themeMode } = useSelector(state => state.themeMode);
+  const styles = modeConfig.style[themeMode];
+  const { t } = useTranslation();
+
   return (
-    <section className={css.navigation}>
-      <StyledLink to="" end>
+    <nav className={css.navigation}>
+      <StyledLink to="" end style={{ ...styles.textColor }}>
         <svg className={css.navigation__icon}>
           <use href={sprite + '#home'}></use>
         </svg>
-        <Media query="(min-width:768px)" render={() => <>Home</>} />
+        <Media query="(min-width:768px)" render={() => <>{t('home')}</>} />
       </StyledLink>
-      <StyledLink to="statistics">
+      <StyledLink to="statistics" style={{ ...styles.textColor }}>
         <svg className={css.navigation__icon}>
           <use href={sprite + '#statistic'}></use>
         </svg>
-        <Media query="(min-width:768px)" render={() => <>Statistics</>} />
+        <Media
+          query="(min-width:768px)"
+          render={() => <>{t('statistics')}</>}
+        />
       </StyledLink>
       <Media
         query="(max-width:768px)"
         render={() => (
-          <StyledLink to="currency">
+          <StyledLink to="currency" style={{ ...styles.textColor }}>
             <svg className={css.navigation__icon}>
               <use href={sprite + '#currency'}></use>
             </svg>
           </StyledLink>
         )}
       />
-    </section>
+    </nav>
   );
 };

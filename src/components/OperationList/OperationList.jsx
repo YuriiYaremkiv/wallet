@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux';
 import { selectTransactionCategories } from 'redux/transactions/transactionsSelectors';
-
-import css from './OperationList.module.scss';
 import { CommentHover } from 'block/CommentHover/CommentHover';
+import { useTranslation } from 'react-i18next';
+import css from './OperationList.module.scss';
 
 export const OperationList = ({ transactions, onDelete }) => {
   const categories = useSelector(selectTransactionCategories);
   const categoriesList = categories.map(data => data);
   const operations = [...transactions];
+  const { t } = useTranslation();
 
   return (
     <div className={css.operations}>
@@ -31,26 +32,26 @@ export const OperationList = ({ transactions, onDelete }) => {
                 }
               >
                 <li>
-                  <p>Date</p>
+                  <p>{t('date')}</p>
                   <p>{transactionDate}</p>
                 </li>
                 <li>
-                  <p>Type</p>
+                  <p>{t('type')}</p>
                   <p>{type !== 'EXPENSE' ? '+' : '-'}</p>
                 </li>
                 <li>
-                  <p>Category</p>
+                  <p>{t('category')}</p>
                   <p>
                     {categoriesList.length &&
                       categoriesList.find(cat => cat.id === categoryId).name}
                   </p>
                 </li>
                 <li>
-                  <p>Comment</p>
+                  <p>{t('comment')}</p>
                   {comment ? <CommentHover comment={comment} /> : <p>-</p>}
                 </li>
                 <li>
-                  <p>Sum</p>
+                  <p>{t('sum')}</p>
                   <p
                     className={
                       type === 'EXPENSE'
@@ -62,7 +63,7 @@ export const OperationList = ({ transactions, onDelete }) => {
                   </p>
                 </li>
                 <li>
-                  <p>Balance</p>
+                  <p>{t('balance')}</p>
                   <p>{balanceAfter.toFixed(2)}</p>
                 </li>
                 <li>
@@ -71,7 +72,7 @@ export const OperationList = ({ transactions, onDelete }) => {
                     type="button"
                     onClick={() => onDelete(id, amount)}
                   >
-                    Delete
+                    {t('delete')}
                   </button>
                 </li>
               </ul>
