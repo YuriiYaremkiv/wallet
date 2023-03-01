@@ -35,17 +35,29 @@ $effect: (
   --bgColorSecondaryLight: #e0e0e0;
   --bgColorThreeLight: rgba(255, 255, 255, 0.2);
   --bgColorShadowLight: 'transparent';
+  --bgColorModalLight: rgba(0, 0, 0, 0.25);
   --bgColorBlue: rgba(74, 86, 226, 1);
   --bgColorGreen: rgba(36, 204, 167, 1);
 
   --bgColorPrimaryDark: #212121;
   --bgColorSecondaryDark: #424242;
   --bgColorShadowDark: rgba(0, 0, 0, 0.4);
+  --bgColorModalDark: rgba(0, 0, 0, 0.25);
+
+  --bgColorBlack: #000;
 
   --textColorWhite: #fff;
+  --textColorBlack: #000;
+  --textColorBlue: rgba(74, 86, 226, 1);
   --textColorGray: rgba(189, 189, 189, 1);
+  --textColorGreen: rgba(36, 204, 167, 1);
+  --textColorRed: rgba(255, 101, 150, 1);
 
-  /* text colors */
+  --effectTimer: 250ms;
+  --effectLongTimer: 450ms;
+  --effectFunction: ease-in-out;
+
+  /* text colors  *************************************************************************************/
   --primary-text-color: rgba(0, 0, 0, 1);
   --secondary-text-color: rgba(255, 255, 255, 1);
   --blue-text-color: rgba(74, 86, 226, 1);

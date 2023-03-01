@@ -1,0 +1,30 @@
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.text {
+  font-family: 'Prompt', sans-serif;
+  font-size: 24px;
+}
+
+.text__accent {
+  color: var(--textColorBlue);
+}
+
+@media screen and (min-width: 768px) {
+  .icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .text {
+    font-size: 36px;
+  }
+}

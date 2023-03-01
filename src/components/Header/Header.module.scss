@@ -1,29 +1,17 @@
 @import '../../style/vars.scss';
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
 
 .header__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  padding: 15px 0 15px 0;
-}
-
-.logo__icon {
-  margin-right: 16px;
-  width: 30px;
-  height: 30px;
-}
-
-.logo__text {
-  display: block;
-
-  font-size: 25px;
-  line-height: 1;
-  font-weight: 700;
+  padding: 10px 0;
 }
 
 .menu {
@@ -58,21 +46,6 @@
 }
 
 @media screen and (min-width: map-get($breakpoints, 'tablet')) {
-  .logo {
-    align-items: baseline;
-  }
-
-  .logo__icon {
-    margin-right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-
-  .logo__text {
-    font-size: 30px;
-    line-height: 1.5;
-  }
-
   .menu__name {
     margin-right: 24px;
     padding-right: 0;

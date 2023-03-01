@@ -1,24 +1,29 @@
-import moment from 'moment';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { transactionSchema } from './transaction_validation';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
 import 'react-datetime/css/react-datetime.css';
 import calendar from './images/calendar.svg';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import moment from 'moment';
 import { addTransaction } from 'redux/transactions/transactionsOperations';
 import { fetchTransactionCategories } from 'redux/transactions/transactionsOperations';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { selectTransactionCategories } from 'redux/transactions/transactionsSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
 import FormikDateTime from './FormicDatetime';
-
+import CloseIcon from '@mui/icons-material/Close';
+import { useTranslation } from 'react-i18next';
+import modeConfig from 'configs/mode.config';
 import css from './ModalAddTransaction.module.scss';
 
-import CloseIcon from '@mui/icons-material/Close';
+import * as yup from 'yup';
+
+const transactionSchema = yup.object().shape({
+  amount: yup.string().required(),
+  transactionDate: yup.date().required('date is required field'),
+});
 
 const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
   const [type, setType] = useState('EXPENSE');
@@ -27,6 +32,10 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
   const dispatch = useDispatch();
   const categories = useSelector(selectTransactionCategories);
 
+  const { themeMode } = useSelector(state => state.themeMode);
+  const styles = modeConfig.style[themeMode];
+  const { t } = useTranslation();
+
   const initialValue = {
     type: 'EXPENSE',
     amount: '',
@@ -34,6 +43,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
     transactionDate: moment(),
     comment: '',
   };
+
   const onToggle = (setFieldValue, resetForm, values) => {
     setToogle(!toogle);
     if (values.target.checked) {
@@ -95,7 +105,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
         <button className={css.CloseBtn} onClick={onClose} type="button">
           <CloseIcon className={css.CloseBtn__icon} />
         </button>
-        <h2 className={css.modal__title}>Add transaction</h2>
+        <h2 className={css.modal__title}>{t('addTransaction')}</h2>
         <Formik
           initialValues={initialValue}
           validationSchema={transactionSchema}
@@ -109,9 +119,9 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
             <Form>
               <div className={css.modalWrappenTransaction}>
                 {toogle ? (
-                  <p className={css.activeTransactionIncome}>Income</p>
+                  <p className={css.activeTransactionIncome}>{t('income')}</p>
                 ) : (
-                  <p className={css.modalTransactionIncome}>Income</p>
+                  <p className={css.modalTransactionIncome}>{t('income')}</p>
                 )}
 
                 <label className={css.toggleSwitch}>
@@ -126,9 +136,11 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
                   <span className={css.switch} />
                 </label>
                 {toogle ? (
-                  <p className={css.modalTransactionExpense}>Expense</p>
+                  <p className={css.modalTransactionExpense}>{t('expenses')}</p>
                 ) : (
-                  <p className={css.activeTransactionExpense}>Expense</p>
+                  <p className={css.activeTransactionExpense}>
+                    {t('expenses')}
+                  </p>
                 )}
               </div>
               {!toogle && (
@@ -142,7 +154,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
                         className={css.modalSelect}
                         placeholder={
                           <div className={css.selectPlaceholderText}>
-                            Select a category
+                            {t('selectAcategory')}
                           </div>
                         }
                         options={categories
@@ -217,7 +229,7 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
                 className={css.inputCommentText}
                 type="text"
                 name="comment"
-                placeholder="Comment"
+                placeholder={t('comment')}
               />
               <button
                 className={css.btnAdd}
@@ -226,10 +238,10 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
                   !toogle ? formik.validateField('categoryId') : null
                 }
               >
-                Add
+                {t('add')}
               </button>
               <button className={css.btnCancel} onClick={onClose}>
-                Cancel
+                {t('cancel')}
               </button>
             </Form>
           )}
@@ -239,4 +251,5 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
     </div>
   );
 };
+
 export default ModalAddTransaction;

@@ -6,6 +6,7 @@ import { SelectCountry } from 'components/SelectCountry/SelectCountry';
 import sprite from '../../images/icons/icons.svg';
 import modeConfig from 'configs/mode.config';
 import css from './Header.module.scss';
+import { Logo } from 'components/Logo/Logo';
 
 export const Header = () => {
   const userName = useSelector(state => state.auth.user.username);
@@ -17,14 +18,7 @@ export const Header = () => {
     <header className={css.header} style={{ ...styles.backgroundColorHeader }}>
       <div className="container">
         <div className={css.header__container}>
-          <div className={css.logo}>
-            <svg className={css.logo__icon}>
-              <use href={sprite + '#wallet'}></use>
-            </svg>
-            <span style={{ ...styles.textColor }} className={css.logo__text}>
-              {t('title')}
-            </span>
-          </div>
+          <Logo />
           <div
             style={{
               display: 'flex',
@@ -32,8 +26,8 @@ export const Header = () => {
               padding: '10px 0',
             }}
           >
-            <SelectCountry />
             <ChangeMode />
+            <SelectCountry />
           </div>
           <div className={css.menu}>
             <span style={{ ...styles.textColor }} className={css.menu__name}>

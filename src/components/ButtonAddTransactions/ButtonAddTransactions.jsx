@@ -1,5 +1,4 @@
 import css from './ButtonAddTransactions.module.scss';
-import btnAddTransactions from '../ButtonAddTransactions/image/btnAddTransactions.svg';
 import { useState, useEffect } from 'react';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
@@ -53,10 +52,11 @@ const ButtonAddTransactions = () => {
       )}
       <button
         type="button"
-        className={css.btnAdd}
+        className={css.button}
         onClick={() => handleOpenModal()}
       >
-        <img className={css.btnIcon} src={btnAddTransactions} alt="calendar" />
+        +
+        {/* <img className={css.btnIcon} src={btnAddTransactions} alt="calendar" /> */}
       </button>
     </>
   );

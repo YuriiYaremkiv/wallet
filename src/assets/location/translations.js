@@ -48,6 +48,10 @@ const translation = {
     expenses: 'Expenses',
     income: 'Income',
     nothing: 'Nothing',
+    addTransaction: 'Add transaction',
+    selectAcategory: 'Select a category',
+    add: 'Add',
+    cancel: 'Cancel',
   },
   ua: {
     title: 'Фінансовий додаток',
@@ -98,6 +102,10 @@ const translation = {
     expenses: 'Витрати',
     income: 'Дохід',
     nothing: 'Відсуті дані',
+    addTransaction: 'Додати транзакцію',
+    selectAcategory: 'Виберіть категорію',
+    add: 'Додати',
+    cancel: 'Скасувати',
   },
 };
 
