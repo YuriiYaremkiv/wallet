@@ -1,46 +1,25 @@
 import { useSelector } from 'react-redux';
-import { LogOutForm } from 'components/LogOutForm/LogOutForm';
-import { useTranslation } from 'react-i18next';
+import Media from 'react-media';
+import { Logo } from 'components/Logo/Logo';
 import { ChangeMode } from 'components/ChangeMode/ChangeMode';
 import { SelectCountry } from 'components/SelectCountry/SelectCountry';
-import sprite from '../../images/icons/icons.svg';
+import { LogOutForm } from 'components/LogOutForm/LogOutForm';
 import modeConfig from 'configs/mode.config';
 import css from './Header.module.scss';
-import { Logo } from 'components/Logo/Logo';
 
 export const Header = () => {
-  const userName = useSelector(state => state.auth.user.username);
   const { themeMode } = useSelector(state => state.themeMode);
   const styles = modeConfig.style[themeMode];
-  const { t } = useTranslation();
 
   return (
     <header className={css.header} style={{ ...styles.backgroundColorHeader }}>
       <div className="container">
         <div className={css.header__container}>
           <Logo />
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'right',
-              padding: '10px 0',
-            }}
-          >
-            <ChangeMode />
-            <SelectCountry />
-          </div>
           <div className={css.menu}>
-            <span style={{ ...styles.textColor }} className={css.menu__name}>
-              {userName}
-            </span>
-            <LogOutForm>
-              <svg
-                style={{ ...styles.textColor }}
-                className={css.menu__exitIcon}
-              >
-                <use href={sprite + '#exit'}></use>
-              </svg>
-            </LogOutForm>
+            <Media query="(min-width:768px)" render={() => <ChangeMode />} />
+            <Media query="(min-width:480px)" render={() => <SelectCountry />} />
+            <LogOutForm />
           </div>
         </div>
       </div>

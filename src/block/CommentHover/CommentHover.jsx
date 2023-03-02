@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-
-import React from 'react';
+import css from './CommentHover.module.scss';
 
 export const CommentHover = ({ comment }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handlePopoverOpen = event => {
     setAnchorEl(event.currentTarget);
@@ -31,6 +31,7 @@ export const CommentHover = ({ comment }) => {
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
+        className={css.comment}
       >
         {newComment}
       </Typography>

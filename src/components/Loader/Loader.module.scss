@@ -1,19 +1,27 @@
-@import '../../style/vars.scss';
-
 .loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: var(--bgColorModal);
+  z-index: 100;
+}
+
+.linear {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 6px !important;
+
+  background-color: rgba(74, 86, 226, 0.3) !important;
+}
+
+.logo {
   position: absolute;
   top: 50%;
   left: 50%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 100vh;
-
-  background-color: map-get($BgColors, 'modal');
-
   transform: translate(-50%, -50%);
-  z-index: 100;
 }

@@ -51,7 +51,11 @@ const DiagramTab = () => {
   );
 
   const data = {
-    labels: [...allCategories?.map(category => category.name)],
+    labels: [
+      ...allCategories?.map(category => {
+        return t(`${category.name.toLowerCase()}`);
+      }),
+    ],
     color: [
       '#FED057',
       '#FFD8D0',
@@ -62,10 +66,13 @@ const DiagramTab = () => {
       '#81E1FF',
       '#24CCA7',
       '#00AD84',
+      '#D2B48C',
+      '#008080',
+      '#800080',
     ],
     datasets: [
       {
-        label: 'Total expence',
+        label: t('totalExpence'),
         data: [...allCategories?.map(category => category.total)],
         backgroundColor: [
           '#FED057',
@@ -77,6 +84,9 @@ const DiagramTab = () => {
           '#81E1FF',
           '#24CCA7',
           '#00AD84',
+          '#D2B48C',
+          '#008080',
+          '#800080',
         ],
         borderColor: [
           '#FED057',
@@ -88,6 +98,9 @@ const DiagramTab = () => {
           '#81E1FF',
           '#24CCA7',
           '#00AD84',
+          '#D2B48C',
+          '#008080',
+          '#800080',
         ],
         borderWidth: 1,
       },
@@ -221,7 +234,7 @@ const DiagramTab = () => {
                       style={{ ...styles.textColor }}
                       className={css.list__name}
                     >
-                      {name}
+                      {t(`${name.toLowerCase()}`)}
                     </p>
                   </div>
                   <p

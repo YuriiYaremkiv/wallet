@@ -6,6 +6,13 @@ import { useTranslation } from 'react-i18next';
 import modeConfig from 'configs/mode.config';
 import css from './OperationTable.module.scss';
 
+function formatNumber(value) {
+  const formattedValue = value
+    .toFixed(2)
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
+  return formattedValue;
+}
+
 export const OperationTable = ({ transactions, onDelete }) => {
   const categories = useSelector(selectTransactionCategories);
   const categoriesList = categories.map(data => data);
@@ -70,9 +77,14 @@ export const OperationTable = ({ transactions, onDelete }) => {
                           {type !== 'EXPENSE' ? '+' : '-'}
                         </td>
                         <td className={css.table__category}>
-                          {categoriesList.length &&
-                            categoriesList.find(cat => cat.id === categoryId)
-                              .name}
+                          {t(
+                            `${
+                              categoriesList.length &&
+                              categoriesList
+                                .find(cat => cat.id === categoryId)
+                                .name.toLowerCase()
+                            }`
+                          )}
                         </td>
                         <td className={css.table__comment}>
                           {comment ? <CommentHover comment={comment} /> : '-'}
@@ -80,10 +92,12 @@ export const OperationTable = ({ transactions, onDelete }) => {
                         <td
                           className={amount > 0 ? css.positive : css.negative}
                         >
-                          <p className={css.table__sum}>{amount.toFixed(2)}</p>
+                          <p className={css.table__sum}>
+                            {formatNumber(amount)}
+                          </p>
                         </td>
                         <td className={css.table__balance}>
-                          {balanceAfter.toFixed(2)}
+                          {formatNumber(balanceAfter)}
                         </td>
                         <td className={css.table__btn}>
                           <button

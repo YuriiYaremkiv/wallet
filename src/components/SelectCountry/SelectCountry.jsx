@@ -23,7 +23,7 @@ export const SelectCountry = () => {
     case 'ua':
       stylesHorizontal.left = 0;
       stylesHorizontal.width = '90px';
-      stylesHorizontal.transform = 'translateX(60px)';
+      stylesHorizontal.transform = 'translateX(58px)';
       break;
     default:
       return stylesHorizontal;
@@ -31,7 +31,7 @@ export const SelectCountry = () => {
 
   return (
     <div className={css[`selector__${themeMode}`]}>
-      <label>
+      <label style={{ padding: '0 16px 0 16px', cursor: 'pointer' }}>
         <h3
           className={
             type === 'en'
@@ -51,7 +51,12 @@ export const SelectCountry = () => {
         />
       </label>
       <label
-        style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 16px 0 6px',
+          cursor: 'pointer',
+        }}
       >
         <div className={css.flag}>
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">

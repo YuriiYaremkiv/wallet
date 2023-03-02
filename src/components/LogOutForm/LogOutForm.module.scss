@@ -1,25 +1,71 @@
-@import '../../style/vars.scss';
-
-.button {
+.container {
+  position: relative;
   display: flex;
-  padding: 4px;
+  align-items: center;
+  gap: 16px;
+  padding: 0 0px 0 16px;
+
+  border: 1px solid var(--textColorBlue);
+  border-radius: 30px;
+}
+
+.user {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 55px;
+    top: 50%;
+
+    width: 1px;
+    height: 30px;
+
+    background-color: var(--textColorBlue);
+
+    transform: translateY(-50%);
+  }
+}
+
+.buttonLogout {
+  display: flex;
+  align-items: center;
+  padding: 5px 16px 4px 12px;
+  border-radius: 20px;
 
   background: none;
   border: none;
-  border-radius: 4px;
-  align-items: center;
 
   cursor: pointer;
+
+  transition: background-color var(--effectTimer) var(--effectFunction);
+
+  &:hover,
+  &:focus {
+    background-color: var(--textColorBlue);
+  }
+
+  &:hover .icon,
+  &:focus .icon {
+    color: var(--textColorWhite) !important;
+  }
+}
+
+.icon {
+  transition: color var(--effectTimer) var(--effectFunction);
 }
 
 .backdrop {
-  background-color: map-get($BgColors, 'modal');
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+
+  background-color: var(--bgColorModalLight);
+  z-index: 100;
 }
 
 .modal {
@@ -31,55 +77,51 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  padding-top: 10px;
-  height: 150px;
-  width: 250px;
+  padding: 20px 40px 30px 40px;
 
-  font-family: var(--primary-font);
   font-size: 18px;
-  line-height: 1.5;
 
-  background-color: map-get($BgColors, 'primary');
+  background-color: var(--bgColorPrimaryLight);
   border-radius: 10px;
-  z-index: 1000;
+  z-index: 100;
 
   transform: translate(-50%, -50%);
 }
 
-.modal_btn {
-  width: 200px;
-  height: 30px;
-
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 0.1em;
-
-  background: none;
-  border-radius: 20px;
-
-  cursor: pointer;
-
-  margin-bottom: 15;
-  margin-top: 10;
-  border: 1px solid #4a56e2;
-  color: #4a56e2;
+.text {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.modal_btnExit {
-  width: 200px;
-  height: 30px;
+.button,
+.buttonExit {
+  width: 100%;
 
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 0.1em;
-  color: map-get($textColors, 'secondary');
+  font-size: 16px;
 
-  background-color: #24cca7;
   border-radius: 20px;
+}
 
-  cursor: pointer;
+.button {
+  color: var(--textColorBlue);
 
-  margin-bottom: 15;
-  margin-top: 10;
-  border: none;
+  border: 1px solid var(--textColorBlue);
+
+  &:hover,
+  &:focus {
+    color: var(--textColorBlue);
+    border: 1px solid var(--textColorBlue);
+  }
+}
+
+.buttonExit {
+  color: var(--textColorWhite);
+
+  background-color: var(--textColorGreen);
+
+  &:hover,
+  &:focus {
+    background-color: var(--textColorGreenHover);
+  }
 }

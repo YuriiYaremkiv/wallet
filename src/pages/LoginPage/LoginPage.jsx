@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsloadingLogin } from 'redux/auth/authSelectors';
 import { Loader } from 'components/Loader/Loader';
 import { FormContainer } from 'block/FormContainer/FormContainer';
 import { FormLogin } from 'components/FormLogin/FormLogin';
@@ -11,10 +10,13 @@ import modeConfig from 'configs/mode.config';
 import css from './LoginPage.module.scss';
 
 export const LoginPage = () => {
+  const isLoading = useSelector(state => state.auth.isLoading);
+  const error = useSelector(state => state.auth.error);
   const { themeMode } = useSelector(state => state.themeMode);
-  const isLoading = useSelector(selectIsloadingLogin);
-  const { t } = useTranslation();
   const styles = modeConfig.style[themeMode];
+  const { t } = useTranslation();
+
+  console.log(error);
 
   return (
     <section className={css[`section__${themeMode}`]}>
@@ -35,14 +37,14 @@ export const LoginPage = () => {
             {t('title')}
           </h1>
           <div className={css.page__modal}>
-            <FormContainer>
+            <FormContainer error={error}>
               <FormLogin />
             </FormContainer>
           </div>
           <Suspense fallback={<Loader />}></Suspense>
-          {isLoading && <Loader />}
         </div>
       </div>
+      {isLoading && <Loader />}
     </section>
   );
 };

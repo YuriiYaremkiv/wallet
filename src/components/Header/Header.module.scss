@@ -1,4 +1,3 @@
-@import '../../style/vars.scss';
 .header {
   position: sticky;
   top: 0;
@@ -9,58 +8,25 @@
 
 .header__container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 .menu {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 16px;
 }
 
-.menu__name {
-  position: relative;
-  display: block;
-  padding: 0 12px 0 0;
-
-  font-size: 18px;
-  line-height: 1;
-  color: map-get($textColors, 'gray');
-  text-transform: capitalize;
-}
-
-.menu__exitIcon {
-  width: 18px;
-  height: 18px;
-
-  fill: map-get($textColors, 'gray');
-
-  transition: fill map-get($effect, 'timer') map-get($effect, 'function'),
-    transform map-get($effect, 'timer') map-get($effect, 'function');
-
-  &:hover {
-    fill: map-get($textColors, 'blue');
-    transform: scale(1.05);
-  }
-}
-
-@media screen and (min-width: map-get($breakpoints, 'tablet')) {
-  .menu__name {
-    margin-right: 24px;
-    padding-right: 0;
+@media screen and (min-width: 768px) {
+  .header__container {
+    flex-direction: row;
   }
 
-  .menu__name::after {
-    content: '';
-    position: absolute;
-    right: -12px;
-    top: 50%;
-
-    width: 1px;
-    height: 30px;
-    background-color: map-get($textColors, 'gray');
-
-    transform: translateY(-50%);
+  .menu {
+    flex-direction: row;
   }
 }

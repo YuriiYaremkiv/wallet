@@ -28,14 +28,13 @@
 }
 
 .table__comment {
+  font-family: 'Montserrat' !important;
   width: 130px;
   height: 10px;
   overflow: overlay;
 
   text-align: left;
   white-space: nowrap;
-
-  // background-color: red;
 }
 
 .table__sum {
