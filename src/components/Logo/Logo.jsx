@@ -18,3 +18,16 @@ export const Logo = () => {
     </div>
   );
 };
+
+export const LogoNotMode = () => {
+  return (
+    <div className={css.logo}>
+      <svg className={css.icon}>
+        <use href={sprite + '#wallet'}></use>
+      </svg>
+      <p className={css.text}>
+        Finance<span className={css.text__accent}>App</span>
+      </p>
+    </div>
+  );
+};

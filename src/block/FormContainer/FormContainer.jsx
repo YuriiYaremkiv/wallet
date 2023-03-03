@@ -1,17 +1,28 @@
-import sprite from './icons/register-icons.svg';
 import css from './FormContainer.module.scss';
+import { SelectCountry } from 'components/SelectCountry/SelectCountry';
+import { ChangeMode } from 'components/ChangeMode/ChangeMode';
+import { LogoNotMode } from 'components/Logo/Logo';
 
 export const FormContainer = ({ title = 'Wallet', children, error = '' }) => {
   return (
     <div className={css.FormContainer}>
-      <div className={css.FormContainer__container}>
-        <svg className={css.registrationPage__icon} width="40" height="40">
-          <use href={`${sprite + '#wallet'}`}></use>
-        </svg>
-        <h2 className={css.FormContainer__title}>{title}</h2>
+      <div className={css.menu}>
+        <ChangeMode style={{ marginRight: 'auto' }} />
+        <SelectCountry />
       </div>
-      {children}
-      {error && <p className={css.error}>{error}</p>}
+      <div className={css.FormContainer__container}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '6px',
+          }}
+        >
+          <LogoNotMode />
+        </div>
+        {children}
+        {error && <p className={css.error}>{error}</p>}
+      </div>
     </div>
   );
 };

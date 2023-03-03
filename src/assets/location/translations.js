@@ -1,6 +1,6 @@
 const translation = {
   en: {
-    title: 'Finance App',
+    title: 'Your personal financial application',
     registration: 'Registration',
     login: 'Login',
     name: 'Name',
@@ -9,9 +9,9 @@ const translation = {
     confirmPassword: 'Confirm password',
     required: 'Required',
     signUp: 'Sign up',
-    signUpNotification: "Do you already have a profile? Let's login.",
+    signUpNotification: "Do you already have a profile? Let's login!",
     signIn: 'Sign in',
-    signInNotification: `Don't have an account? Sign Up`,
+    signInNotification: `Don't have an account? Sign Up!`,
     formikMin3: 'Must be at least 3 characters',
     formikMin6: 'Must be at least 6 characters',
     formikMax15: 'Must be 15 characters or less',
@@ -66,9 +66,10 @@ const translation = {
     wantExit: 'Did you want to exit?',
     exit: 'Exit',
     hi: 'Hi,  ',
+    errorPage: 'Error... this page is not found!',
   },
   ua: {
-    title: 'Фінансовий додаток',
+    title: 'Твій персональний фінансовий додаток',
     registration: 'Реєстрація',
     login: 'Увійти',
     name: "Ім'я",
@@ -77,9 +78,9 @@ const translation = {
     confirmPassword: 'Підтвердьте пароль',
     required: "Обов'язкове поле",
     signUp: 'Зареєструватися',
-    signUpNotification: 'У вас вже є профіль? Тоді авторизуйтесь.',
+    signUpNotification: 'У вас вже є профіль? Тоді авторизуйтесь!',
     signIn: 'Увійти',
-    signInNotification: `Немає облікового запису? Зареєструватися.`,
+    signInNotification: `Немає облікового запису? Зареєструватися!`,
     formikMin3: 'Має бути не менше 3 символів',
     formikMin6: 'Має бути не менше 6 символів',
     formikMax15: 'Має бути 15 символів або менше',
@@ -134,6 +135,7 @@ const translation = {
     wantExit: 'Ви дійсно бажаєте вийти?',
     exit: 'Вийти',
     hi: 'Привіт,  ',
+    errorPage: 'Помилка... ця сторінка не знайдена!',
   },
 };
 

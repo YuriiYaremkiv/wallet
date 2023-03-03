@@ -1,11 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './authOperations';
 
-const handleRejected = (state, action) => {
-  state.error = 'Something went wrong. Check your email and password';
-  state.isLoading = false;
-};
-
 const state = {
   user: { name: null, email: null, password: null },
   token: null,
@@ -30,6 +25,10 @@ export const auth = createSlice({
       state.error = null;
       state.isLoading = false;
     });
+    builder.addCase(register.rejected, (state, action) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    });
     builder.addCase(logIn.pending, state => {
       state.isLoading = true;
       state.error = null;
@@ -41,7 +40,11 @@ export const auth = createSlice({
       state.error = null;
       state.isLoading = false;
     });
-    builder.addCase(logIn.rejected, handleRejected);
+    builder.addCase(logIn.rejected, (state, action) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    });
+
     builder.addCase(logOut.fulfilled, state => {
       state.user = { name: null, email: null, password: null };
       state.isLoggedIn = false;

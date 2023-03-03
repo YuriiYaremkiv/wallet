@@ -1,31 +1,24 @@
-@import '../../style/mixins.scss';
-
 .FormContainer {
   width: 100%;
   max-width: 475px;
-  padding: 30px 50px 30px;
+}
 
-  background-color: var(--bgColorPrimaryLight);
-
-  border-radius: 20px;
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 12px;
+  padding-top: 12px;
 }
 
 .FormContainer__container {
-  @include flex-center;
+  padding: 30px 50px 30px;
   margin-bottom: 12px;
-}
-.registrationPage__icon {
-  width: 32px;
-  height: 32px;
-  margin-right: 20px;
-}
 
-.FormContainer__title {
-  font-family: Poppins;
-  font-weight: 700;
-  line-height: 1.5;
-  font-size: 30px;
-  color: var(--textColorBlack);
+  background-color: var(--bgColorPrimaryLight);
+  border-radius: 20px;
 }
 
 .error {
@@ -34,9 +27,8 @@
   color: var(--textColorRed);
 }
 
-@media screen and (min-width: 768px) {
-  .registrationPage__icon {
-    width: 40px;
-    height: 40px;
+@media screen and (min-width: 480px) {
+  .menu {
+    justify-content: right;
   }
 }

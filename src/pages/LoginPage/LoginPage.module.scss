@@ -69,6 +69,16 @@
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .page__title {
+    display: block;
+    padding: 10px;
+    max-width: 480px;
+
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 767px) and (max-width: 1279px) {
@@ -94,13 +104,12 @@
   .page__title {
     display: block;
     position: absolute;
-    top: 190px;
+    top: 140px;
     right: 140px;
+    max-width: 350px;
 
     font-family: Poppins;
-    font-style: Regular;
     font-size: 30px;
-    line-height: 45px;
   }
 
   .page__modal {
@@ -135,13 +144,6 @@
         var(--bgColorPrimaryDark) 45%,
         var(--bgColorSecondaryDark) 0
       );
-  }
-
-  .page__title {
-    top: 50%;
-    left: 60px;
-
-    transform: translateY(250px);
   }
 
   .page__modal {

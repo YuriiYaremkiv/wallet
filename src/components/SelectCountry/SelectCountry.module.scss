@@ -5,12 +5,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 auto;
 
-  max-width: 180px;
+  max-width: 140px;
+  height: 32px;
 
   border: 1px solid var(--textColorBlue);
-  border-radius: 10px;
+  border-radius: 30px;
   overflow: hidden;
 
   z-index: 0;
@@ -45,7 +45,20 @@
 
 .backGroungHorizontal__light,
 .backGroungHorizontal__dark {
-  display: none;
+  position: absolute;
+  display: block;
+  height: 32px;
+
+  background-color: var(--bgColorBlue);
+  border-radius: 30px;
+
+  transition: all var(--effectTimer) var(--effectFunction);
+
+  z-index: -1;
+}
+
+.backGroungHorizontal__dark {
+  background-color: var(--bgColorBlue);
 }
 
 @media screen and (min-width: 480px) {
@@ -56,32 +69,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0 auto;
-
-    max-width: 250px;
-
-    border-radius: 30px;
-    overflow: hidden;
 
     z-index: 0;
-  }
-
-  .backGroungHorizontal__light,
-  .backGroungHorizontal__dark {
-    position: absolute;
-    display: block;
-    height: 36px;
-
-    background-color: var(--bgColorBlue);
-    border-radius: 30px;
-
-    transition: all var(--effectTimer) var(--effectFunction);
-
-    z-index: -1;
-  }
-
-  .backGroungHorizontal__dark {
-    background-color: var(--bgColorBlue);
   }
 }
 
@@ -89,7 +78,6 @@
   .selector__light,
   .selector__dark {
     flex-direction: row;
-    margin: 0 auto 0 0;
   }
 }
 

@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { FormHelperText, Input } from '@mui/material';
 import * as Yup from 'yup';
+import { FormHelperText, Input } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { register } from 'redux/auth/authOperations';
 import IconButton from '@mui/material/IconButton';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -13,16 +15,22 @@ import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
-import modeConfig from 'configs/mode.config';
 import css from './FormRegister.module.scss';
 
-import { register } from 'redux/auth/authOperations';
+const theme = createTheme({
+  typography: {
+    fontFamily: "'Open Sans', sans-serif",
+  },
+  palette: {
+    primary: {
+      main: 'rgba(74, 86, 226, 1)',
+    },
+  },
+});
 
-export const FormRegister = ({ handleUserRegister }) => {
+export const FormRegister = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const { themeMode } = useSelector(state => state.themeMode);
-  const styles = modeConfig.style[themeMode];
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -73,192 +81,192 @@ export const FormRegister = ({ handleUserRegister }) => {
   };
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      // style={{ ...styles.backgroundColorInput }}
-      className={css.form}
-    >
+    <form onSubmit={formik.handleSubmit} className={css.form}>
       {/* Name - start */}
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <TextField
-          label={t('name')}
-          variant="standard"
-          id="name"
-          name="name"
-          type="text"
-          size="small"
-          error={Boolean(formik.touched.name && formik.errors.name)}
-          className={css.input}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.name}
-        />
-        <FormHelperText
-          size="small"
-          error={Boolean(formik.touched.name && formik.errors.name)}
-          style={{
-            height: '14px',
-            marginTop: 0,
-            marginBottom: '4px',
-            padding: 0,
-            fontSize: '12px',
-            visibility:
-              formik.touched.name && formik.errors.name ? 'visible' : 'hidden',
-          }}
-        >
-          {formik.errors.name}
-        </FormHelperText>
-      </FormControl>
-      {/* Name - end */}
+      <ThemeProvider theme={theme}>
+        <FormControl sx={{ width: '100%' }} variant="standard">
+          <TextField
+            label={t('name')}
+            variant="standard"
+            id="name"
+            name="name"
+            type="text"
+            size="small"
+            error={Boolean(formik.touched.name && formik.errors.name)}
+            className={css.input}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.name}
+          />
+          <FormHelperText
+            size="small"
+            error={Boolean(formik.touched.name && formik.errors.name)}
+            style={{
+              height: '14px',
+              marginTop: 0,
+              marginBottom: '4px',
+              padding: 0,
+              fontSize: '12px',
+              visibility:
+                formik.touched.name && formik.errors.name
+                  ? 'visible'
+                  : 'hidden',
+            }}
+          >
+            {formik.errors.name}
+          </FormHelperText>
+        </FormControl>
+        {/* Name - end */}
 
-      {/* Email - start */}
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <TextField
-          label={t('email')}
-          variant="standard"
-          id="email"
-          name="email"
-          type="email"
-          size="small"
-          error={Boolean(formik.touched.email && formik.errors.email)}
-          className={css.input}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-        />
-        <FormHelperText
-          error={Boolean(formik.touched.email && formik.errors.email)}
-          style={{
-            height: '14px',
-            marginTop: 0,
-            marginBottom: '4px',
-            padding: 0,
-            fontSize: '12px',
-            visibility:
-              formik.touched.email && formik.errors.email
-                ? 'visible'
-                : 'hidden',
-          }}
-        >
-          {formik.errors.password}
-        </FormHelperText>
-      </FormControl>
-      {/* Email - end */}
+        {/* Email - start */}
+        <FormControl sx={{ width: '100%' }} variant="standard">
+          <TextField
+            label={t('email')}
+            variant="standard"
+            id="email"
+            name="email"
+            type="email"
+            size="small"
+            error={Boolean(formik.touched.email && formik.errors.email)}
+            className={css.input}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          <FormHelperText
+            error={Boolean(formik.touched.email && formik.errors.email)}
+            style={{
+              height: '14px',
+              marginTop: 0,
+              marginBottom: '4px',
+              padding: 0,
+              fontSize: '12px',
+              visibility:
+                formik.touched.email && formik.errors.email
+                  ? 'visible'
+                  : 'hidden',
+            }}
+          >
+            {formik.errors.password}
+          </FormHelperText>
+        </FormControl>
+        {/* Email - end */}
 
-      {/* Password - start */}
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <InputLabel
-          htmlFor="standard-adornment-password"
-          size="small"
-          error={Boolean(formik.touched.password && formik.errors.password)}
-        >
-          {t('password')}
-        </InputLabel>
-        <Input
-          id="password"
-          name="password"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-          type={showPassword ? 'text' : 'password'}
-          size="small"
-          error={Boolean(formik.touched.password && formik.errors.password)}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label={t('password')}
-        />
-        <FormHelperText
-          error={Boolean(formik.touched.password && formik.errors.password)}
-          style={{
-            height: '14px',
-            marginTop: 0,
-            marginBottom: '4px',
-            padding: 0,
-            fontSize: '12px',
-            visibility:
-              formik.touched.password && formik.errors.password
-                ? 'visible'
-                : 'hidden',
-          }}
-        >
-          {formik.errors.password}
-        </FormHelperText>
-      </FormControl>
-      {/* Password - end */}
+        {/* Password - start */}
+        <FormControl sx={{ width: '100%' }} variant="standard">
+          <InputLabel
+            htmlFor="standard-adornment-password"
+            size="small"
+            error={Boolean(formik.touched.password && formik.errors.password)}
+          >
+            {t('password')}
+          </InputLabel>
+          <Input
+            id="password"
+            name="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            type={showPassword ? 'text' : 'password'}
+            size="small"
+            error={Boolean(formik.touched.password && formik.errors.password)}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label={t('password')}
+          />
+          <FormHelperText
+            error={Boolean(formik.touched.password && formik.errors.password)}
+            style={{
+              height: '14px',
+              marginTop: 0,
+              marginBottom: '4px',
+              padding: 0,
+              fontSize: '12px',
+              visibility:
+                formik.touched.password && formik.errors.password
+                  ? 'visible'
+                  : 'hidden',
+            }}
+          >
+            {formik.errors.password}
+          </FormHelperText>
+        </FormControl>
+        {/* Password - end */}
 
-      {/* Confirm password - start */}
-      <FormControl sx={{ width: '100%' }} variant="standard">
-        <InputLabel
-          htmlFor="standard-adornment-password"
-          size="small"
-          error={Boolean(
-            formik.touched.confirmPassword && formik.errors.confirmPassword
-          )}
-        >
-          {t('confirmPassword')}
-        </InputLabel>
-        <Input
-          id="confirmPassword"
-          name="confirmPassword"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.confirmPassword}
-          type={showConfirmPassword ? 'text' : 'password'}
-          size="small"
-          error={Boolean(
-            formik.touched.confirmPassword && formik.errors.confirmPassword
-          )}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowConfirmPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label={t('confirmPassword')}
-        />
-        <FormHelperText
-          error={Boolean(
-            formik.touched.confirmPassword && formik.errors.confirmPassword
-          )}
-          style={{
-            height: '14px',
-            marginTop: 0,
-            marginBottom: '16px',
-            padding: 0,
-            fontSize: '12px',
-            visibility:
+        {/* Confirm password - start */}
+        <FormControl sx={{ width: '100%' }} variant="standard">
+          <InputLabel
+            htmlFor="standard-adornment-password"
+            size="small"
+            error={Boolean(
               formik.touched.confirmPassword && formik.errors.confirmPassword
-                ? 'visible'
-                : 'hidden',
-          }}
-        >
-          {formik.errors.confirmPassword}
-        </FormHelperText>
-      </FormControl>
-      {/* Confirm password - end */}
+            )}
+          >
+            {t('confirmPassword')}
+          </InputLabel>
+          <Input
+            id="confirmPassword"
+            name="confirmPassword"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.confirmPassword}
+            type={showConfirmPassword ? 'text' : 'password'}
+            size="small"
+            error={Boolean(
+              formik.touched.confirmPassword && formik.errors.confirmPassword
+            )}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowConfirmPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label={t('confirmPassword')}
+          />
+          <FormHelperText
+            error={Boolean(
+              formik.touched.confirmPassword && formik.errors.confirmPassword
+            )}
+            style={{
+              height: '14px',
+              marginTop: 0,
+              marginBottom: '16px',
+              padding: 0,
+              fontSize: '12px',
+              visibility:
+                formik.touched.confirmPassword && formik.errors.confirmPassword
+                  ? 'visible'
+                  : 'hidden',
+            }}
+          >
+            {formik.errors.confirmPassword}
+          </FormHelperText>
+        </FormControl>
+        {/* Confirm password - end */}
 
-      <Button type="submit" variant="contained" className={css.form__button}>
-        {t('signUp')}
-      </Button>
-      <Link to="/" className={css.form__link}>
-        {t('signUpNotification')}
-      </Link>
+        <Button type="submit" variant="contained" className={css.form__button}>
+          {t('signUp')}
+        </Button>
+        <Link to="/" className={css.form__link}>
+          {t('signUpNotification')}
+        </Link>
+      </ThemeProvider>
     </form>
   );
 };

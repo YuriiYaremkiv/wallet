@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { BsFillTrashFill } from 'react-icons/bs';
-import { selectTransactionCategories } from 'redux/transactions/transactionsSelectors';
 import { CommentHover } from 'block/CommentHover/CommentHover';
 import { useTranslation } from 'react-i18next';
 import modeConfig from 'configs/mode.config';
@@ -14,7 +13,9 @@ function formatNumber(value) {
 }
 
 export const OperationTable = ({ transactions, onDelete }) => {
-  const categories = useSelector(selectTransactionCategories);
+  const categories = useSelector(
+    state => state.transactions.transactionCategories.items
+  );
   const categoriesList = categories.map(data => data);
   const transactionsReverse = [...transactions];
   const { themeMode } = useSelector(state => state.themeMode);
@@ -52,7 +53,7 @@ export const OperationTable = ({ transactions, onDelete }) => {
         </table>
         <div className={css.scrollTableBody}>
           <table>
-            {/* ********************************************** table  *********************************/}
+            {/* Table - start */}
             <tbody>
               {transactions.length ? (
                 transactionsReverse
@@ -117,6 +118,7 @@ export const OperationTable = ({ transactions, onDelete }) => {
                 </tr>
               )}
             </tbody>
+            {/* Table - end */}
           </table>
         </div>
       </div>

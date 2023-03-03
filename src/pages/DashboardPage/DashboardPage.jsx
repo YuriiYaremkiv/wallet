@@ -15,7 +15,7 @@ import modeConfig from 'configs/mode.config';
 import css from './DashboardPage.module.scss';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
-const DashboardPage = () => {
+export const DashboardPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const { themeMode } = useSelector(state => state.themeMode);
   const styles = modeConfig.style[themeMode];
@@ -69,5 +69,3 @@ const DashboardPage = () => {
     </>
   );
 };
-
-export default DashboardPage;
