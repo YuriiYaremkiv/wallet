@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { BsFillTrashFill } from 'react-icons/bs';
@@ -9,13 +9,12 @@ import { useTranslation } from 'react-i18next';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import modeConfig from 'configs/mode.config';
 import css from './Table.module.scss';
 
 const theme = createTheme({
   typography: {
     fontFamily: "'Open Sans', sans-serif",
-    fontSize: '16',
+    fontSize: 16,
   },
   palette: {
     primary: {
@@ -36,8 +35,7 @@ export const Table = () => {
   const categoriesList = useSelector(
     state => state.transactions.transactionCategories.items
   );
-  const { themeMode } = useSelector(state => state.themeMode);
-  const styles = modeConfig.style[themeMode];
+  const [page, setPage] = useState(5);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -158,11 +156,20 @@ export const Table = () => {
     }
   );
 
+  const handleRowsPerPageChange = event => {
+    setPage(event);
+  };
+  const translations = {
+    rowsPerPage: 'Рядов на странице',
+    page: 'Страница',
+    of: 'из',
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          height: 800,
+          height: 630,
           width: '100%',
           backgroundColor: '#fff',
         }}
@@ -170,11 +177,13 @@ export const Table = () => {
         <DataGrid
           rows={rows}
           columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10, 15]}
+          pageSize={page}
+          rowsPerPageOptions={[5, 10, 15]}
+          onPageSizeChange={handleRowsPerPageChange}
           experimentalFeatures={{ newEditingApi: true }}
           disableColumnMenu
           disableSelectionOnClick={true}
+          localeText={translations}
           style={{ backgroundColor: '#fff' }}
         />
       </Box>

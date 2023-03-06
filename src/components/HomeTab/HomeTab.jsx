@@ -65,9 +65,10 @@ export const HomeTab = () => {
                 exclusive
                 onChange={handleChange}
                 aria-label="Platform"
+                style={{ ...styles.backgroundColorThree }}
               >
-                <ToggleButton value="small">Short</ToggleButton>
-                <ToggleButton value="big">Detaling</ToggleButton>
+                <ToggleButton value="small">v1.0</ToggleButton>
+                <ToggleButton value="big">v2.0</ToggleButton>
               </ToggleButtonGroup>
             </div>
             {alignment === 'small' ? (
