@@ -53,7 +53,6 @@ export const OperationTable = ({ transactions, onDelete }) => {
         </table>
         <div className={css.scrollTableBody}>
           <table>
-            {/* Table - start */}
             <tbody>
               {transactions.length ? (
                 transactionsReverse
@@ -118,7 +117,6 @@ export const OperationTable = ({ transactions, onDelete }) => {
                 </tr>
               )}
             </tbody>
-            {/* Table - end */}
           </table>
         </div>
       </div>

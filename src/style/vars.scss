@@ -1,37 +1,5 @@
-$BgColors: (
-  'primary': #ffffff,
-  'secondary': #e0e0e0,
-  'green': #24cca7,
-  'ultramarine': #4a56e2,
-  'red': #ff6596,
-  'error': red,
-  'modal': rgba(0, 0, 0, 0.25),
-);
-
-$textColors: (
-  'primary': #000000,
-  'secondary': #ffffff,
-  'blue': #4a56e2,
-  'ultramarine': #4a56e2,
-  'red': #ff6596,
-  'green': #24cca7,
-  'gray': #bdbdbd,
-  'error': red,
-);
-
-$breakpoints: (
-  'mobile': 480px,
-  'tablet': 768px,
-  'computer': 1280px,
-);
-
-$effect: (
-  'timer': 250ms,
-  'function': ease-in-out,
-);
-
 :root {
-  --bgColorPrimaryLight: #fff;
+  --bgColorPrimaryLight: #ffffff;
   --bgColorSecondaryLight: #e0e0e0;
   --bgColorThreeLight: rgba(255, 255, 255, 0.2);
   --bgColorShadowLight: 'transparent';
@@ -47,7 +15,7 @@ $effect: (
   --bgColorBlack: #000;
   --bgColorModal: #e0e0e0;
 
-  --textColorWhite: #fff;
+  --textColorWhite: #ffffff;
   --textColorBlack: #000;
   --textColorBlue: rgba(74, 86, 226, 1);
   --textColorGray: rgba(189, 189, 189, 1);
@@ -59,21 +27,17 @@ $effect: (
   --effectLongTimer: 450ms;
   --effectFunction: ease-in-out;
 
-  /* text colors  *************************************************************************************/
-  --primary-text-color: rgba(0, 0, 0, 1);
-  --secondary-text-color: rgba(255, 255, 255, 1);
-  --blue-text-color: rgba(74, 86, 226, 1);
-  --red-text-color: rgba(255, 101, 150, 1);
-  --green-text-color: rgba(36, 204, 167, 1);
-  --gray-text-color: rgba(189, 189, 189, 1);
-
-  /* backgrounds colors */
-  --primary-back-color: rgba(255, 255, 255, 1);
-  --secondary-back-color: rgba(255, 255, 255, 0.4);
-  --green-back-color: rgba(36, 204, 167, 1);
-  --blue-back-color: rgba(74, 86, 226, 1);
-
-  /* fonts */
   --primary-font: 'Circe';
   --secondary-font: 'Poppins';
 }
+
+$breakpoints: (
+  'mobile': 480px,
+  'tablet': 768px,
+  'computer': 1280px,
+);
+
+$effect: (
+  'timer': 250ms,
+  'function': ease-in-out,
+);

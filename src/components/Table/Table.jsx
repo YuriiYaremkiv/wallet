@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { deleteTransaction } from 'redux/transactions/transactionsOperations';
 import { changeBalance } from 'redux/auth/authSlice';
 import { useTranslation } from 'react-i18next';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import css from './Table.module.scss';

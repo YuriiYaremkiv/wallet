@@ -5,5 +5,4 @@ export const selectTransactionCategories = state =>
   state.transactions.transactionCategories.items;
 export const selectTransactionIsLoading = state =>
   state.transactionCategories.isLoading;
-
 export const selectStatistic = state => state.transactions.summaryItems;

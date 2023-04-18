@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Media from 'react-media';
 import { deleteTransaction } from 'redux/transactions/transactionsOperations';
 import { changeBalance } from 'redux/auth/authSlice';
 import { OperationList } from 'components/OperationList/OperationList';
 import { OperationTable } from 'components/OperationTable/OperationTable';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Table } from 'components/Table/Table';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Media from 'react-media';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import modeConfig from 'configs/mode.config';
 
 const theme = createTheme({

@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import Media from 'react-media';
 import { Logo } from 'components/Logo/Logo';
 import { ChangeMode } from 'components/ChangeMode/ChangeMode';
 import { SelectCountry } from 'components/SelectCountry/SelectCountry';
 import { LogOutForm } from 'components/LogOutForm/LogOutForm';
+import Media from 'react-media';
 import modeConfig from 'configs/mode.config';
 import css from './Header.module.scss';
 

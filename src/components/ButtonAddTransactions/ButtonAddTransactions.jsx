@@ -1,6 +1,6 @@
-import css from './ButtonAddTransactions.module.scss';
 import { useState, useEffect } from 'react';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
+import css from './ButtonAddTransactions.module.scss';
 
 const ButtonAddTransactions = () => {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -56,7 +56,6 @@ const ButtonAddTransactions = () => {
         onClick={() => handleOpenModal()}
       >
         +
-        {/* <img className={css.btnIcon} src={btnAddTransactions} alt="calendar" /> */}
       </button>
     </>
   );

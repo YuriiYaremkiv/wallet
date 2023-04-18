@@ -1,24 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Select from 'react-select';
-import 'react-datetime/css/react-datetime.css';
-import calendar from './images/calendar.svg';
-import moment from 'moment';
 import { addTransaction } from 'redux/transactions/transactionsOperations';
 import { fetchTransactionCategories } from 'redux/transactions/transactionsOperations';
 import { selectTransactionCategories } from 'redux/transactions/transactionsSelectors';
 import { refreshUser } from 'redux/auth/authOperations';
+import { useTranslation } from 'react-i18next';
+import * as yup from 'yup';
+import calendar from './images/calendar.svg';
+import moment from 'moment';
 import FormikDateTime from './FormicDatetime';
 import CloseIcon from '@mui/icons-material/Close';
-import { useTranslation } from 'react-i18next';
-import modeConfig from 'configs/mode.config';
+import Select from 'react-select';
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-datetime/css/react-datetime.css';
 import css from './ModalAddTransaction.module.scss';
-
-import * as yup from 'yup';
 
 const transactionSchema = yup.object().shape({
   amount: yup.string().required(),
@@ -28,12 +25,8 @@ const transactionSchema = yup.object().shape({
 const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
   const [type, setType] = useState('EXPENSE');
   const [toogle, setToogle] = useState(false);
-
   const dispatch = useDispatch();
   const categories = useSelector(selectTransactionCategories);
-
-  const { themeMode } = useSelector(state => state.themeMode);
-  const styles = modeConfig.style[themeMode];
   const { t } = useTranslation();
 
   const initialValue = {
@@ -115,7 +108,6 @@ const ModalAddTransaction = ({ onClose, onClickBackdrop }) => {
           }}
         >
           {formik => (
-            // {/************************************************/}
             <Form>
               <div className={css.modalWrappenTransaction}>
                 {toogle ? (

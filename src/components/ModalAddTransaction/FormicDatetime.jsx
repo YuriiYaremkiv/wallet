@@ -15,11 +15,8 @@ const FormikDateTime = ({ field, form, timeFormat }) => {
   };
 
   const onFieldBlur = () => {
-    form.setFieldTouched(field.name,true);
+    form.setFieldTouched(field.name, true);
   };
-
-
-
 
   return (
     <Datetime
@@ -30,7 +27,6 @@ const FormikDateTime = ({ field, form, timeFormat }) => {
       name={field.name}
       onChange={onFieldChange}
       onBlur={onFieldBlur}
-
     />
   );
 };

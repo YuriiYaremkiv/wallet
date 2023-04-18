@@ -67,7 +67,6 @@ export const FormLogin = () => {
 
   return (
     <form onSubmit={formik.handleSubmit} className={css.form}>
-      {/* Email - start */}
       <ThemeProvider theme={theme}>
         <FormControl sx={{ width: '100%' }} variant="standard">
           <TextField
@@ -101,9 +100,7 @@ export const FormLogin = () => {
             {formik.errors.password}
           </FormHelperText>
         </FormControl>
-        {/* Email - end */}
 
-        {/* Password - start */}
         <FormControl sx={{ width: '100%' }} variant="standard">
           <InputLabel
             htmlFor="standard-adornment-password"
@@ -153,7 +150,6 @@ export const FormLogin = () => {
             {formik.errors.password}
           </FormHelperText>
         </FormControl>
-        {/* Password - end */}
 
         <Button type="submit" variant="contained" className={css.form__button}>
           {t('signIn')}
@@ -162,6 +158,13 @@ export const FormLogin = () => {
           {t('signInNotification')}
         </Link>
       </ThemeProvider>
+      <p style={{ fontSize: '0.85rem' }}>User to test:</p>
+      <p style={{ fontSize: '0.85rem' }}>
+        email: <span style={{ fontWeight: 'bold' }}>user-test@mail.com</span>
+      </p>
+      <p style={{ fontSize: '0.85rem' }}>
+        password: <span style={{ fontWeight: 'bold' }}>user-test</span>
+      </p>
     </form>
   );
 };

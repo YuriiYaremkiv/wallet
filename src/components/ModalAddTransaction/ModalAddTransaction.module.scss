@@ -1,5 +1,3 @@
-@import '../../style/vars.scss';
-
 .backdrop {
   position: fixed;
   top: 0;
@@ -11,8 +9,8 @@
   justify-content: center;
   align-items: center;
 
-  background-color: map-get($BgColors, 'modal');
-  z-index: 1040;
+  background-color: var(--bgColorModalLight);
+  z-index: 900;
 }
 
 .modal {
@@ -25,9 +23,9 @@
   max-width: 320px;
   height: 710px;
 
-  background-color: var(--primary-back-color);
+  background-color: var(--bgColorPrimaryLight);
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 1000;
 }
 
 .CloseBtn {
@@ -52,16 +50,16 @@
   .CloseBtn__icon {
     width: 100%;
     height: 100%;
-    color: map-get($textColors, 'primary');
+    color: var(--textColorBlack);
 
     border-radius: 50%;
 
-    transition: color map-get($effect, 'timer') map-get($effect, 'function'),
-      background-color map-get($effect, 'timer') map-get($effect, 'function');
+    transition: color var(--effectTimer) var(--effectFunction),
+      background-color var(--effectTimer) var(--effectFunction);
 
     &:hover {
-      color: map-get($textColors, 'secondary');
-      background-color: map-get($textColors, 'blue');
+      color: var(--textColorWhite);
+      background-color: var(--bgColorBlue);
     }
   }
 }
@@ -70,7 +68,7 @@
   font-size: 24px;
   line-height: 1.5;
   text-align: center;
-  color: var(--primary-text-color);
+  color: var(--textColorBlack);
   margin-bottom: 40px;
 }
 
@@ -102,14 +100,14 @@
   font-size: 16px;
   line-height: 1.5;
   text-align: right;
-  color: var(--green-text-color);
+  color: var(--textColorGreen);
 }
 
 .activeTransactionExpense {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--red-text-color);
+  color: var(--textColorRed);
 }
 
 .toggleSwitch {
@@ -125,7 +123,7 @@
 .toggleSwitch .switch {
   position: absolute;
   cursor: pointer;
-  background: var(--primary-back-color);
+  background: var(--bgColorPrimaryLight);
   border: 1px solid #e0e0e0;
   border-radius: 25px;
   top: 0;
@@ -141,7 +139,7 @@
   top: -2px;
   width: 44px;
   height: 44px;
-  background: var(--red-text-color);
+  background: var(--textColorRed);
   border-radius: 50%;
   transition: transform 0.3s ease;
   background-image: url(../ModalAddTransaction/images/expense.svg);
@@ -172,13 +170,13 @@
 .modalInput::placeholder {
   font-size: 18px;
   line-height: 1.5;
-  color: var(--gray-text-color);
+  color: var(--textColorGray);
 }
 
 .selectPlaceholderText {
   font-size: 18px;
   line-height: 1.5;
-  color: var(--gray-text-color);
+  color: var(--textColorGray);
 }
 
 .modalSelect {
@@ -212,7 +210,7 @@ input {
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  color: var(--primary-text-color);
+  color: var(--textColorBlack);
 }
 
 .inputDatetime {
@@ -246,7 +244,7 @@ input {
 .inputCommentText::placeholder {
   font-size: 18px;
   line-height: 1.5;
-  color: var(--gray-text-color);
+  color: var(--textColorGray);
 }
 
 .btnCancel {
@@ -258,9 +256,9 @@ input {
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--blue-text-color);
-  background: var(--primary-back-color);
-  border: 1px solid var(--blue-back-color);
+  color: var(--textColorBlue);
+  background: var(--bgColorPrimaryLight);
+  border: 1px solid var(--bgColorBlue);
   border-radius: 20px;
   cursor: pointer;
   padding: 13px 65px 13px 71px;
@@ -275,9 +273,9 @@ input {
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--secondary-text-color);
-  background: var(--green-back-color);
-  border: 1px solid var(--blue-back-color);
+  color: var(--textColorWhite);
+  background: var(--bgColorGreen);
+  border: 1px solid var(--bgColorBlue);
   border-radius: 20px;
   border: transparent;
   cursor: pointer;
@@ -308,7 +306,6 @@ input {
   .modal {
     max-width: 540px;
     height: 603px;
-    background-color: var(--primary-back-color);
     border-radius: 20px;
     padding: 40px 80px;
   }

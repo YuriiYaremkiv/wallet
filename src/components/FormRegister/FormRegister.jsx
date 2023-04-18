@@ -82,7 +82,6 @@ export const FormRegister = () => {
 
   return (
     <form onSubmit={formik.handleSubmit} className={css.form}>
-      {/* Name - start */}
       <ThemeProvider theme={theme}>
         <FormControl sx={{ width: '100%' }} variant="standard">
           <TextField
@@ -116,9 +115,7 @@ export const FormRegister = () => {
             {formik.errors.name}
           </FormHelperText>
         </FormControl>
-        {/* Name - end */}
 
-        {/* Email - start */}
         <FormControl sx={{ width: '100%' }} variant="standard">
           <TextField
             label={t('email')}
@@ -150,9 +147,7 @@ export const FormRegister = () => {
             {formik.errors.password}
           </FormHelperText>
         </FormControl>
-        {/* Email - end */}
 
-        {/* Password - start */}
         <FormControl sx={{ width: '100%' }} variant="standard">
           <InputLabel
             htmlFor="standard-adornment-password"
@@ -201,9 +196,7 @@ export const FormRegister = () => {
             {formik.errors.password}
           </FormHelperText>
         </FormControl>
-        {/* Password - end */}
 
-        {/* Confirm password - start */}
         <FormControl sx={{ width: '100%' }} variant="standard">
           <InputLabel
             htmlFor="standard-adornment-password"
@@ -258,7 +251,6 @@ export const FormRegister = () => {
             {formik.errors.confirmPassword}
           </FormHelperText>
         </FormControl>
-        {/* Confirm password - end */}
 
         <Button type="submit" variant="contained" className={css.form__button}>
           {t('signUp')}

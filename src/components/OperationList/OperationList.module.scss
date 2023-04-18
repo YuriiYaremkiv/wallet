@@ -1,5 +1,3 @@
-@import '../../style/vars.scss';
-
 .operations {
   display: flex;
   flex-direction: column;
@@ -14,12 +12,12 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 0/5;
-  color: map-get($textColors, 'primary');
+  color: var(--textColorBlack);
 
-  background-color: map-get($BgColors, 'primary');
+  background-color: var(--bgColorPrimaryLight);
   background-image: linear-gradient(
     to right,
-    map-get($textColors, 'green') 2%,
+    var(--textColorGreen) 2%,
     transparent 2%,
     transparent
   );
@@ -30,14 +28,14 @@
     justify-content: space-between;
     padding: 6px 20px;
 
-    border-bottom: 1px solid map-get($BgColors, 'secondary');
+    border-bottom: 1px solid var(--bgColorSecondaryLight);
   }
 
   & p:first-child {
     font-weight: 700;
     font-size: 18px;
 
-    color: map-get($textColors, 'primary');
+    color: var(--textColorBlack);
   }
 }
 
@@ -47,12 +45,12 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 0/5;
-  color: map-get($textColors, 'primary');
+  color: var(--textColorBlack);
 
-  background-color: map-get($BgColors, 'primary');
+  background-color: var(--bgColorPrimaryLight);
   background-image: linear-gradient(
     to right,
-    map-get($textColors, 'red') 2%,
+    var(--textColorRed) 2%,
     transparent 2%,
     transparent
   );
@@ -63,25 +61,25 @@
     justify-content: space-between;
     padding: 6px 20px;
 
-    border-bottom: 1px solid map-get($BgColors, 'secondary');
+    border-bottom: 1px solid var(--bgColorSecondaryLight);
   }
 
   & p:first-child {
     font-weight: 700;
     font-size: 18px;
 
-    color: map-get($textColors, 'primary');
+    color: var(--textColorBlack);
   }
 }
 
 .operations__balanceAdd {
   font-weight: 700;
-  color: map-get($textColors, 'red');
+  color: var(--textColorRed);
 }
 
 .operations__balanceRem {
   font-weight: 700;
-  color: map-get($textColors, 'green');
+  color: var(--textColorGreen);
 }
 
 .operation__btn {
@@ -90,12 +88,12 @@
   padding: 8px 32px;
 
   font-size: 18px;
-  color: map-get($textColors, 'secondary');
+  color: var(--bgColorPrimaryLight);
 
   border-radius: 10px;
   border: none;
 
-  background-color: map-get($BgColors, 'blue');
+  background-color: var(--bgColorBlue);
   transform: scaleY(1);
   opacity: 0.9;
   cursor: pointer;

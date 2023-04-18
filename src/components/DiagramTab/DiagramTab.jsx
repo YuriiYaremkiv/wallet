@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import css from './DiagramTab.module.scss';
 import {
   fetchTransactionsSummaryOfPeriod,
   fetchTransactionsSummary,
@@ -11,6 +10,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import modeConfig from 'configs/mode.config';
+import css from './DiagramTab.module.scss';
 ChartJS.register(ArcElement, Tooltip);
 
 function formatNumber(value) {
@@ -146,7 +146,6 @@ export const DiagramTab = () => {
           {t('statistics')}
         </h1>
 
-        {/* Diagram - start */}
         {allCategories.length ? (
           <div className={css.schedule}>
             <Doughnut data={data} />
@@ -157,11 +156,9 @@ export const DiagramTab = () => {
         ) : (
           <p style={{ ...styles.textColor }}>{t('nothing')}</p>
         )}
-        {/* Diagram - end */}
       </div>
 
       <div className={css.block2}>
-        {/* Select month and year - start */}
         <div className={css.select}>
           <select
             className={css.select__item}
@@ -203,9 +200,7 @@ export const DiagramTab = () => {
             <option value="2029">2029</option>
           </select>
         </div>
-        {/* Select month and year - end */}
 
-        {/* List of categories - start */}
         <div className={css.category}>
           <div className={css.category__title}>
             <p>{t('category')}</p>
@@ -247,11 +242,11 @@ export const DiagramTab = () => {
               ))}
             </ul>
           ) : (
-            <p className={css.list__empty}>{t('list')}</p>
+            <p style={{ ...styles.textColor }} className={css.list__empty}>
+              {t('list')}
+            </p>
           )}
-          {/* List of categories - end */}
 
-          {/* Total balance - start */}
           <ul className={css.listTotal}>
             <li className={css.listTotal__item}>
               <p
@@ -276,7 +271,6 @@ export const DiagramTab = () => {
               </p>
             </li>
           </ul>
-          {/* Total balance - end */}
         </div>
       </div>
     </div>

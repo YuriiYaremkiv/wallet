@@ -81,7 +81,7 @@
 
   font-size: 18px;
 
-  background-color: var(--bgColorPrimaryLight);
+  background-color: var(--bgColorPrimaryLight) !important;
   border-radius: 10px;
   z-index: 100;
 
@@ -104,24 +104,24 @@
 }
 
 .button {
-  color: var(--textColorBlue);
+  color: var(--textColorBlue) !important;
 
-  border: 1px solid var(--textColorBlue);
+  border: 1px solid var(--textColorBlue) !important;
 
   &:hover,
   &:focus {
-    color: var(--textColorBlue);
-    border: 1px solid var(--textColorBlue);
+    color: var(--textColorBlue) !important;
+    border: 1px solid var(--textColorBlue) !important;
   }
 }
 
 .buttonExit {
-  color: var(--textColorWhite);
+  color: var(--textColorWhite) !important;
 
-  background-color: var(--textColorGreen);
+  background-color: var(--textColorGreen) !important;
 
   &:hover,
   &:focus {
-    background-color: var(--textColorGreenHover);
+    background-color: var(--textColorGreenHover) !important;
   }
 }

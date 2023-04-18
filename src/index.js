@@ -5,13 +5,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store, persistor } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import { I18nextProvider } from 'react-i18next';
+import i18n from 'assets/location/react-i18next';
 import './index.css';
 
-import i18n from 'assets/location/react-i18next';
-import { I18nextProvider } from 'react-i18next';
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
   <BrowserRouter basename="wallet">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -21,5 +19,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </PersistGate>
     </Provider>
   </BrowserRouter>
-  // {/* </React.StrictMode> */}
 );

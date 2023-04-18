@@ -7,13 +7,13 @@ import { Loader } from 'components/Loader/Loader';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoading } from 'redux/transactions/transactionsSelectors';
 import { Currency } from 'components/Currency/Currency';
-import Media from 'react-media';
 import { fetchTransactions } from 'redux/transactions/transactionsOperations';
 import { fetchTransactionCategories } from 'redux/transactions/transactionsOperations';
 import { getCurrencyRate } from 'redux/currency/currencyOperations';
+import Media from 'react-media';
 import modeConfig from 'configs/mode.config';
-import css from './DashboardPage.module.scss';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
+import css from './DashboardPage.module.scss';
 
 export const DashboardPage = () => {
   const isLoading = useSelector(selectIsLoading);

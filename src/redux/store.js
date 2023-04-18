@@ -44,10 +44,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// export const store = configureStore({
-//   reducer: {
-//     auth: auth.reducer,
-//     transactions: transactions.reducer,
-//   },
-// });

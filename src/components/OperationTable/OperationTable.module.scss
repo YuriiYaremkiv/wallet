@@ -65,7 +65,7 @@
   padding: 15px 20px;
 
   font-size: 18px;
-  background-color: var(--primary-back-color);
+  background-color: var(--bgColorPrimaryLight);
 }
 
 .scrollTable table th:first-child {
@@ -98,7 +98,7 @@ tr::-webkit-scrollbar {
 }
 
 td::-webkit-scrollbar-thumb {
-  background-color: green;
+  background-color: var(--bgColorGreen);
 }
 
 ::-webkit-scrollbar {
@@ -132,7 +132,7 @@ td.negative {
   outline: none;
   border: none;
   margin: 0 auto;
-  background-color: #6e78e8;
+  background-color: var(--bgColorBlue);
   opacity: 0.9;
   cursor: pointer;
 }
