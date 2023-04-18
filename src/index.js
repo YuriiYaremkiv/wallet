@@ -10,7 +10,7 @@ import i18n from 'assets/location/react-i18next';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter basename="wallet">
+  <BrowserRouter basename="/wallet">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <I18nextProvider i18n={i18n}>
